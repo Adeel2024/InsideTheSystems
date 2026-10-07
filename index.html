@@ -20,8 +20,13 @@
       --display: 'Inter', system-ui, -apple-system, sans-serif;
       --body: 'Inter', system-ui, -apple-system, sans-serif;
     }
-    * { box-sizing: border-box; margin: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       background: var(--bg);
       color: var(--text);
@@ -29,11 +34,29 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
-    a { color: inherit; text-decoration: none; }
-    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
-    .wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
-    h1, h2, h3 { font-family: var(--display); line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; }
-    ::selection { background: var(--gold); color: #2a0516; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .wrap {
+      width: min(1120px, 100% - 2.5rem);
+      margin-inline: auto;
+    }
+    h1, h2, h3 {
+      font-family: var(--display);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+    }
+    ::selection {
+      background: var(--gold);
+      color: #2a0516;
+    }
 
     /* header */
     header {
@@ -43,202 +66,459 @@
       backdrop-filter: blur(14px);
       background: linear-gradient(#0a0816d9, #0a081600);
     }
-    nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    .logo { font: 700 1rem var(--display); display: flex; align-items: center; gap: 0.6rem; letter-spacing: -0.02em; }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .logo {
+      font: 700 1rem var(--display);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      letter-spacing: -0.02em;
+    }
     .logo i {
-      width: 0.6rem; height: 0.6rem; border-radius: 50%;
-      background: var(--gold); box-shadow: 0 0 0 0 #ff7aa890;
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 0 #ff7aa890;
       animation: pulse 2.4s infinite;
     }
     @keyframes pulse {
       70% { box-shadow: 0 0 0 12px #ff7aa800; }
       100% { box-shadow: 0 0 0 0 #ff7aa800; }
     }
-    nav ul { display: flex; gap: 2rem; list-style: none; font-size: 0.9rem; color: var(--mute); font-weight: 500; }
-    nav ul a:hover { color: var(--text); }
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--mute);
+      font-weight: 500;
+    }
+    nav ul a:hover {
+      color: var(--text);
+    }
     .btn {
-      display: inline-block; padding: 0.75rem 1.4rem; border-radius: 999px;
-      font-weight: 600; font-size: 0.9rem;
-      background: var(--gold); color: #2a0516;
-      border: 1px solid var(--gold); cursor: pointer;
+      display: inline-block;
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      background: var(--gold);
+      color: #2a0516;
+      border: 1px solid var(--gold);
+      cursor: pointer;
       font-family: inherit;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px #ff7aa840; }
-    .btn.ghost { background: none; color: var(--text); border-color: var(--line); }
-    .btn.ghost:hover { border-color: var(--gold); box-shadow: none; }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px #ff7aa840;
+    }
+    .btn.ghost {
+      background: none;
+      color: var(--text);
+      border-color: var(--line);
+    }
+    .btn.ghost:hover {
+      border-color: var(--gold);
+      box-shadow: none;
+    }
 
     /* hero */
     .hero {
-      position: relative; min-height: 100svh;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 7rem 0 3rem; overflow: hidden;
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 0 3rem;
+      overflow: hidden;
     }
     .hero::before {
-      content: ""; position: absolute; width: 60vmax; height: 60vmax;
-      left: 50%; top: 10%; translate: -50% 0; border-radius: 50%;
+      content: "";
+      position: absolute;
+      width: 60vmax;
+      height: 60vmax;
+      left: 50%;
+      top: 10%;
+      translate: -50% 0;
+      border-radius: 50%;
       background: radial-gradient(circle, #ff7aa824, #a68bff10 45%, transparent 70%);
       animation: drift 14s ease-in-out infinite alternate;
     }
-    @keyframes drift { to { translate: -35% 12%; scale: 1.15; } }
-    .hero .wrap { position: relative; text-align: center; }
-    .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 800;
-      max-width: 16ch; margin: 0 auto; letter-spacing: -0.03em;
+    @keyframes drift {
+      to { translate: -35% 12%; scale: 1.15; }
     }
-    .hero h1 .w { display: inline-block; white-space: nowrap; }
+    .hero .wrap {
+      position: relative;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 800;
+      max-width: 16ch;
+      margin: 0 auto;
+      letter-spacing: -0.03em;
+    }
+    .hero h1 .w {
+      display: inline-block;
+      white-space: nowrap;
+    }
     .hero h1 .ch {
       display: inline-block;
       animation: letter 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
       background: linear-gradient(100deg, #fff 30%, var(--gold) 50%, #fff 70%);
       background-size: 300% 100%;
-      -webkit-background-clip: text; background-clip: text; color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       animation-name: letter, sheen;
       animation-duration: 1s, 6s;
       animation-iteration-count: 1, infinite;
       animation-delay: var(--d), 2s;
     }
-    @keyframes letter { from { opacity: 0; transform: translateY(40px) rotateX(-70deg); filter: blur(8px); } }
-    @keyframes sheen { from { background-position: 100% 0; } to { background-position: -100% 0; } }
-    .hero h1 { perspective: 800px; }
+    @keyframes letter {
+      from {
+        opacity: 0;
+        transform: translateY(40px) rotateX(-70deg);
+        filter: blur(8px);
+      }
+    }
+    @keyframes sheen {
+      from { background-position: 100% 0; }
+      to { background-position: -100% 0; }
+    }
+    .hero h1 {
+      perspective: 800px;
+    }
     .hero p {
-      max-width: 34rem; margin: 1.6rem auto 2.2rem;
-      color: var(--mute); font-size: 1.1rem;
+      max-width: 34rem;
+      margin: 1.6rem auto 2.2rem;
+      color: var(--mute);
+      font-size: 1.1rem;
       animation: rise 0.9s 0.5s both;
     }
     .hero .row {
-      display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
       animation: rise 0.9s 0.65s both;
     }
-    @keyframes rise { from { opacity: 0; transform: translateY(28px); } }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(28px); }
+    }
 
     /* marquee */
     .marquee {
-      position: relative; margin-top: 4rem; overflow: hidden;
+      position: relative;
+      margin-top: 4rem;
+      overflow: hidden;
       -webkit-mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
       mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
     }
-    .track { display: flex; gap: 1rem; width: max-content; animation: slide 45s linear infinite; }
-    .marquee:hover .track { animation-play-state: paused; }
-    @keyframes slide { to { transform: translateX(-50%); } }
-    .track .reel { width: 150px; flex: none; }
+    .track {
+      display: flex;
+      gap: 1rem;
+      width: max-content;
+      animation: slide 45s linear infinite;
+    }
+    .marquee:hover .track {
+      animation-play-state: paused;
+    }
+    @keyframes slide {
+      to { transform: translateX(-50%); }
+    }
+    .track .reel {
+      width: 150px;
+      flex: none;
+    }
 
     /* reels */
     .reel {
-      position: relative; aspect-ratio: 9/16; border-radius: 20px; overflow: hidden;
+      position: relative;
+      aspect-ratio: 9/16;
+      border-radius: 20px;
+      overflow: hidden;
       border: 1px solid var(--line);
-      display: flex; align-items: flex-end; padding: 1rem;
-      background: #07050f; isolation: isolate;
-      cursor: pointer; text-align: left; color: inherit; font: inherit;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      background: #07050f;
+      isolation: isolate;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
+      font: inherit;
       transition: transform 0.35s, border-color 0.35s;
     }
     .reel::before {
-      content: ""; position: absolute; inset: 0; z-index: -2;
-      background: var(--g); transition: transform 0.7s;
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: var(--g);
+      transition: transform 0.7s;
     }
     .reel::after {
-      content: ""; position: absolute; inset: 0; z-index: -1;
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
       background: linear-gradient(transparent 40%, #07050ff0);
     }
-    .reel:hover { transform: translateY(-6px); border-color: var(--gold); }
-    .reel:hover::before { transform: scale(1.1); }
-    .reel video, .reel img {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;
+    .reel:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
     }
-    .reel h3 { font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
-    .reel small { display: block; margin-top: 0.25rem; color: var(--mute); font-size: 0.78rem; }
+    .reel:hover::before {
+      transform: scale(1.1);
+    }
+    .reel video, .reel img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .reel h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .reel small {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--mute);
+      font-size: 0.78rem;
+    }
     .reel .play {
-      position: absolute; top: 0.8rem; right: 0.8rem;
-      width: 2.2rem; height: 2.2rem; border-radius: 50%;
-      background: #0a0816b0; backdrop-filter: blur(6px);
-      display: grid; place-items: center; font-size: 0.7rem;
+      position: absolute;
+      top: 0.8rem;
+      right: 0.8rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: #0a0816b0;
+      backdrop-filter: blur(6px);
+      display: grid;
+      place-items: center;
+      font-size: 0.7rem;
       transition: background 0.3s, color 0.3s;
     }
-    .reel:hover .play { background: var(--gold); color: #2a0516; }
-    .track .reel h3 { font-size: 0.85rem; }
+    .reel:hover .play {
+      background: var(--gold);
+      color: #2a0516;
+    }
+    .track .reel h3 {
+      font-size: 0.85rem;
+    }
 
-    section { padding: 6.5rem 0; }
-    .head { max-width: 40rem; margin-bottom: 2.6rem; }
-    .head h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; }
-    .head p { margin-top: 1rem; color: var(--mute); }
+    section {
+      padding: 6.5rem 0;
+    }
+    .head {
+      max-width: 40rem;
+      margin-bottom: 2.6rem;
+    }
+    .head h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+    }
+    .head p {
+      margin-top: 1rem;
+      color: var(--mute);
+    }
 
     /* work */
-    #work { background: var(--bg2); }
+    #work {
+      background: var(--bg2);
+    }
 
     /* pricing */
-    .price-box { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.2rem; }
-    .card { border: 1px solid var(--line); border-radius: 28px; padding: 2.4rem; }
-    .calc { background: linear-gradient(160deg, #ff7aa81a, transparent 60%); }
-    .big { font: 800 clamp(2.8rem, 6vw, 4.5rem)/1 var(--display); letter-spacing: -0.04em; }
-    .big small { font: 400 1rem var(--body); color: var(--mute); letter-spacing: 0; margin-left: 0.4rem; }
-    .rate { color: var(--mute); margin-top: 0.6rem; }
-    .calc label { display: flex; justify-content: space-between; margin: 2.2rem 0 0.8rem; font-weight: 600; }
-    input[type=range] { width: 100%; accent-color: var(--gold); height: 1.5rem; }
-    .total {
-      margin-top: 1.6rem; padding-top: 1.4rem;
-      border-top: 1px solid var(--line);
-      display: flex; justify-content: space-between; align-items: baseline;
+    .price-box {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 1.2rem;
     }
-    .total strong { font: 800 2rem var(--display); letter-spacing: -0.03em; color: var(--gold); }
-    .incl h3 { font-size: 1.2rem; margin-bottom: 1.2rem; font-weight: 600; }
-    .incl ul { list-style: none; color: var(--mute); }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 2.4rem;
+    }
+    .calc {
+      background: linear-gradient(160deg, #ff7aa81a, transparent 60%);
+    }
+    .big {
+      font: 800 clamp(2.8rem, 6vw, 4.5rem)/1 var(--display);
+      letter-spacing: -0.04em;
+    }
+    .big small {
+      font: 400 1rem var(--body);
+      color: var(--mute);
+      letter-spacing: 0;
+      margin-left: 0.4rem;
+    }
+    .rate {
+      color: var(--mute);
+      margin-top: 0.6rem;
+    }
+    .calc label {
+      display: flex;
+      justify-content: space-between;
+      margin: 2.2rem 0 0.8rem;
+      font-weight: 600;
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--gold);
+      height: 1.5rem;
+    }
+    .total {
+      margin-top: 1.6rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .total strong {
+      font: 800 2rem var(--display);
+      letter-spacing: -0.03em;
+      color: var(--gold);
+    }
+    .incl h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+    }
+    .incl ul {
+      list-style: none;
+      color: var(--mute);
+    }
     .incl li {
       padding: 0.55rem 0 0.55rem 1.7rem;
       position: relative;
       border-bottom: 1px solid var(--line);
     }
-    .incl li:last-child { border: 0; }
+    .incl li:last-child {
+      border: 0;
+    }
     .incl li::before {
-      content: ""; position: absolute; left: 0; top: 1.05rem;
-      width: 0.55rem; height: 0.55rem; border-radius: 50%;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.05rem;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
       background: var(--ice);
     }
 
     /* process */
-    .process-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem; counter-reset: s;
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      counter-reset: s;
     }
-    .process-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 2rem 1.5rem;
+    .steps div {
+      border-top: 2px solid var(--line);
+      padding-top: 1.2rem;
       counter-increment: s;
       position: relative;
-      transition: border-color 0.3s, transform 0.3s;
     }
-    .process-card:hover { border-color: var(--gold); transform: translateY(-4px); }
-    .process-card::before {
+    .steps div::after {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--gold);
+      transition: width 1.2s 0.2s;
+    }
+    .steps.in div::after {
+      width: 100%;
+    }
+    .steps div::before {
       content: counter(s);
-      font: 700 1.2rem var(--display);
-      display: inline-grid; place-items: center;
-      width: 2.4rem; height: 2.4rem; border-radius: 50%;
-      border: 1px solid var(--gold); color: var(--gold);
-      margin-bottom: 1rem;
-      transition: background 0.3s, color 0.3s;
+      font: 700 0.9rem var(--display);
+      color: var(--gold);
+      display: inline-grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      transition: background 0.4s, color 0.4s;
     }
-    .process-card:hover::before { background: var(--gold); color: #2a0516; }
-    .process-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .process-card p { color: var(--mute); font-size: 0.9rem; }
+    .steps.in div::before {
+      background: var(--gold);
+      color: #2a0516;
+    }
+    .steps h3 {
+      font-size: 1.1rem;
+      margin: 0.6rem 0 0.4rem;
+      font-weight: 600;
+    }
+    .steps p {
+      color: var(--mute);
+      font-size: 0.95rem;
+    }
 
-    .cta { text-align: center; border-top: 1px solid var(--line); }
-    .cta h2 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; max-width: 16ch; margin: 0 auto 1.6rem; }
-    .cta p { color: var(--mute); margin-bottom: 2.2rem; }
-    footer { padding: 2rem 0; color: var(--mute); font-size: 0.85rem; border-top: 1px solid var(--line); }
-    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .cta {
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+    .cta h2 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 800;
+      max-width: 16ch;
+      margin: 0 auto 1.6rem;
+    }
+    .cta p {
+      color: var(--mute);
+      margin-bottom: 2.2rem;
+    }
+    footer {
+      padding: 2rem 0;
+      color: var(--mute);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--line);
+    }
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-    .rv { opacity: 0; transform: translateY(28px); transition: opacity 0.8s, transform 0.8s; }
-    .rv.in { opacity: 1; transform: none; }
+    .rv {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    .rv.in {
+      opacity: 1;
+      transform: none;
+    }
 
     @media(max-width:900px) {
       nav ul { display: none; }
       .price-box { grid-template-columns: 1fr; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
       section { padding: 4.5rem 0; }
     }
     @media(max-width:480px) {
-      .process-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
       .card { padding: 1.6rem; }
     }
     @media(prefers-reduced-motion:reduce) {
@@ -247,28 +527,55 @@
       .rv { opacity: 1; transform: none; }
     }
 
-    #fx { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .hero .wrap, .marquee { position: relative; z-index: 2; }
+    #fx {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .hero .wrap, .marquee {
+      position: relative;
+      z-index: 2;
+    }
     .hero::after {
-      content: ""; position: absolute; inset: auto 0 0; height: 30%;
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 30%;
       background: linear-gradient(transparent, var(--bg));
-      z-index: 1; pointer-events: none;
+      z-index: 1;
+      pointer-events: none;
     }
     .progress {
-      position: fixed; top: 0; left: 0; height: 3px; width: 100%;
-      transform-origin: 0 50%; transform: scaleX(0);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      transform-origin: 0 50%;
+      transform: scaleX(0);
       background: linear-gradient(90deg, var(--ice), var(--gold));
       z-index: 30;
     }
     .cursor {
-      position: fixed; left: 0; top: 0; width: 420px; height: 420px;
-      margin: -210px 0 0 -210px; border-radius: 50%;
-      pointer-events: none; z-index: 1;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 420px;
+      height: 420px;
+      margin: -210px 0 0 -210px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
       background: radial-gradient(circle, #ff7aa81c, #a68bff0d 40%, transparent 70%);
-      will-change: transform; mix-blend-mode: screen;
+      will-change: transform;
+      mix-blend-mode: screen;
     }
     .grain {
-      position: fixed; inset: -50%; z-index: 40; pointer-events: none;
+      position: fixed;
+      inset: -50%;
+      z-index: 40;
+      pointer-events: none;
       opacity: 0.06;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
       animation: grain 1s steps(6) infinite;
@@ -280,193 +587,297 @@
       80% { transform: translate(3%, 3%); }
     }
     .scrolltext {
-      overflow: hidden; padding: 2.2rem 0;
-      border-block: 1px solid var(--line); white-space: nowrap;
+      overflow: hidden;
+      padding: 2.2rem 0;
+      border-block: 1px solid var(--line);
+      white-space: nowrap;
     }
     .scrolltext div {
       display: inline-block;
       font: 800 clamp(2rem, 5vw, 4rem)/1 var(--display);
-      letter-spacing: -0.03em; color: transparent;
+      letter-spacing: -0.03em;
+      color: transparent;
       -webkit-text-stroke: 1px #ffffff44;
       animation: slide 30s linear infinite;
     }
-    .scrolltext b { color: var(--gold); -webkit-text-stroke: 0; margin: 0 1.4rem; }
-    .reel { transform-style: preserve-3d; will-change: transform; }
-    .reel .shine {
-      position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), #ffffff2a, transparent 45%);
-      opacity: 0; transition: opacity 0.3s;
+    .scrolltext b {
+      color: var(--gold);
+      -webkit-text-stroke: 0;
+      margin: 0 1.4rem;
     }
-    .reel:hover .shine { opacity: 1; }
-    .reel>span:last-child { position: relative; z-index: 1; }
+    .reel {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .reel .shine {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), #ffffff2a, transparent 45%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .reel:hover .shine {
+      opacity: 1;
+    }
+    .reel>span:last-child {
+      position: relative;
+      z-index: 1;
+    }
     .calc::before {
-      content: ""; position: absolute; inset: -1px; border-radius: 28px; padding: 1px;
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 28px;
+      padding: 1px;
       background: conic-gradient(from var(--a, 0deg), var(--gold), transparent 25%, var(--ice), transparent 60%, var(--gold));
       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-      animation: spin 6s linear infinite; pointer-events: none;
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: spin 6s linear infinite;
+      pointer-events: none;
     }
-    @property --a { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
-    @keyframes spin { to { --a: 360deg; } }
-    .calc { border-color: transparent; }
-    .hero .row .btn { position: relative; overflow: hidden; }
+    @property --a {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @keyframes spin {
+      to { --a: 360deg; }
+    }
+    .calc {
+      border-color: transparent;
+    }
+    .hero .row .btn {
+      position: relative;
+      overflow: hidden;
+    }
     .btn::after {
-      content: ""; position: absolute; inset: 0;
+      content: "";
+      position: absolute;
+      inset: 0;
       background: linear-gradient(105deg, transparent 35%, #ffffff55 50%, transparent 65%);
-      translate: -120% 0; transition: translate 0.7s;
+      translate: -120% 0;
+      transition: translate 0.7s;
     }
-    .btn:hover::after { translate: 120% 0; }
+    .btn:hover::after {
+      translate: 120% 0;
+    }
     .scrollhint {
-      position: absolute; bottom: 1.4rem; left: 50%; translate: -50% 0;
-      z-index: 3; width: 22px; height: 36px;
-      border: 1.5px solid #ffffff55; border-radius: 12px;
+      position: absolute;
+      bottom: 1.4rem;
+      left: 50%;
+      translate: -50% 0;
+      z-index: 3;
+      width: 22px;
+      height: 36px;
+      border: 1.5px solid #ffffff55;
+      border-radius: 12px;
     }
     .scrollhint::after {
-      content: ""; position: absolute; left: 50%; top: 7px;
-      width: 3px; height: 7px; margin-left: -1.5px; border-radius: 2px;
-      background: var(--gold); animation: wheel 1.8s infinite;
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 7px;
+      width: 3px;
+      height: 7px;
+      margin-left: -1.5px;
+      border-radius: 2px;
+      background: var(--gold);
+      animation: wheel 1.8s infinite;
     }
-    @keyframes wheel { 70% { transform: translateY(12px); opacity: 0; } }
-    @media(hover:none) { .cursor { display: none; } }
+    @keyframes wheel {
+      70% { transform: translateY(12px); opacity: 0; }
+    }
+    @media(hover:none) {
+      .cursor { display: none; }
+    }
     @media(prefers-reduced-motion:reduce) {
       .grain, .cursor { display: none; }
       .hero h1 .ch { color: var(--text); background: none; }
     }
 
-    /* ===== CYLINDRICAL CAROUSEL (mesh3d-inspired) ===== */
+    /* ===== 3D ROTATING GALLERY (mesh3d.gallery inspired) ===== */
     .gallery-section {
       padding: 4rem 0 6rem;
       background: var(--bg2);
       position: relative;
-      overflow: hidden;
     }
-
-    .carousel-wrap {
+    .gallery-wrap {
       position: relative;
       width: 100%;
-      height: clamp(420px, 55vw, 620px);
-      perspective: 1800px;
-      perspective-origin: 50% 35%;
+      height: 600px;
+      perspective: 1600px;
+      perspective-origin: 50% 40%;
       cursor: grab;
       user-select: none;
       -webkit-user-select: none;
       touch-action: pan-y;
-      margin-top: 1rem;
     }
-    .carousel-wrap:active { cursor: grabbing; }
-
-    .carousel-stage {
+    .gallery-wrap:active {
+      cursor: grabbing;
+    }
+    .gallery-ring {
       position: absolute;
       left: 50%;
       top: 50%;
       width: 0;
       height: 0;
       transform-style: preserve-3d;
-      will-change: transform;
+      transform: translateZ(-400px);
+      transition: transform 0.1s ease-out;
     }
-
-    .carousel-item {
+    .gallery-item {
       position: absolute;
-      width: clamp(220px, 26vw, 340px);
-      aspect-ratio: 4 / 5;
+      width: 170px;
+      height: 300px;
       left: 50%;
       top: 50%;
-      margin-left: calc(clamp(220px, 26vw, 340px) / -2);
-      margin-top: calc(clamp(220px, 26vw, 340px) * -0.625);
-      border-radius: 22px;
+      margin: -150px 0 0 -85px;
+      border-radius: 20px;
       overflow: hidden;
-      border: 1px solid #ffffff14;
-      background: #0a0816;
-      box-shadow: 0 40px 80px -30px #000e, 0 0 0 1px #ffffff08 inset;
+      border: 1px solid var(--line);
+      background: transparent;
+      /* Transparent from the back — no backface culling */
       backface-visibility: visible;
       -webkit-backface-visibility: visible;
       -webkit-user-drag: none;
+      box-shadow: 0 30px 60px -20px #000c;
       cursor: pointer;
-      transition: border-color 0.4s, box-shadow 0.4s;
-      isolation: isolate;
-      display: block;
+      transition: border-color 0.3s, box-shadow 0.3s, opacity 0.2s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      text-align: left;
     }
-
-    .carousel-item img,
-    .carousel-item video {
+    .gallery-item:hover {
+      border-color: var(--gold);
+      box-shadow: 0 40px 80px -20px #000e, 0 0 40px -10px var(--gold);
+      z-index: 5;
+    }
+    .gallery-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: var(--g);
+      transition: transform 0.7s;
+    }
+    .gallery-item:hover::before {
+      transform: scale(1.1);
+    }
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(transparent 40%, #07050ff0);
+    }
+    .gallery-item img, .gallery-item video {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
+      z-index: -2;
+      transition: transform 0.7s;
     }
-
-    .carousel-item::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(transparent 55%, #07050fcc 90%, #07050ff0);
-      pointer-events: none;
+    .gallery-item:hover img, .gallery-item:hover video {
+      transform: scale(1.08);
     }
-
-    .carousel-item .meta {
-      position: absolute;
-      left: 1.1rem;
-      right: 1.1rem;
-      bottom: 1rem;
-      z-index: 2;
-      text-align: left;
-    }
-
-    .carousel-item h3 {
-      font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+    .gallery-item h3 {
+      font-size: 0.9rem;
       font-weight: 600;
       letter-spacing: -0.01em;
       line-height: 1.2;
-      color: #fff;
     }
-    .carousel-item small {
+    .gallery-item small {
       display: block;
       margin-top: 0.2rem;
-      color: #ffffff99;
-      font-size: clamp(0.65rem, 0.85vw, 0.75rem);
-      letter-spacing: 0.02em;
+      color: var(--mute);
+      font-size: 0.7rem;
     }
-
-    .carousel-item:hover {
-      border-color: var(--gold);
-      box-shadow: 0 50px 100px -30px #000e, 0 0 60px -10px var(--gold);
-    }
-    .carousel-item:hover img,
-    .carousel-item:hover video {
-      transform: scale(1.06);
-      transition: transform 0.6s;
-    }
-
-    .carousel-wrap::before,
-    .carousel-wrap::after {
-      content: "";
+    .gallery-item .go {
       position: absolute;
-      left: 0;
-      right: 0;
-      height: 22%;
-      pointer-events: none;
-      z-index: 3;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: 0.3s;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
     }
-    .carousel-wrap::before {
-      top: 0;
-      background: linear-gradient(var(--bg2), transparent);
+    .gallery-item:hover .go {
+      opacity: 1;
+      transform: none;
     }
-    .carousel-wrap::after {
-      bottom: 0;
-      background: linear-gradient(transparent, var(--bg2));
+    .gallery-item:hover small {
+      opacity: 0;
     }
 
-    @media(max-width:700px) {
-      .carousel-wrap { height: 380px; perspective: 1200px; }
-      .carousel-item {
-        width: 180px;
-        margin-left: -90px;
-        margin-top: -112px;
-      }
+    /* new process layout */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      counter-reset: s;
+    }
+    .process-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      counter-increment: s;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .process-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+    .process-card::before {
+      content: counter(s);
+      font: 700 1.2rem var(--display);
+      display: inline-grid;
+      place-items: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      margin-bottom: 1rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    .process-card:hover::before {
+      background: var(--gold);
+      color: #2a0516;
+    }
+    .process-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .process-card p {
+      color: var(--mute);
+      font-size: 0.9rem;
+    }
+
+    @media(max-width:900px) {
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-wrap { height: 480px; }
+      .gallery-item { width: 140px; height: 250px; margin: -125px 0 0 -70px; }
+      .gallery-ring { transform: translateZ(-320px) scale(0.9); }
+    }
+    @media(max-width:600px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .gallery-wrap { height: 400px; }
+      .gallery-item { width: 110px; height: 200px; margin: -100px 0 0 -55px; border-radius: 14px; }
+      .gallery-item h3 { font-size: 0.7rem; }
+      .gallery-item small { font-size: 0.6rem; }
+      .gallery-ring { transform: translateZ(-240px) scale(0.85); }
     }
   </style>
 </head>
@@ -506,21 +917,19 @@
       <div>Videos with sound<b>✦</b>Creative visuals<b>✦</b>History stories<b>✦</b>Videos with sound<b>✦</b>Creative visuals<b>✦</b>History stories<b>✦</b></div>
     </div>
 
-    <!-- ===== WORK / CYLINDRICAL CAROUSEL ===== -->
+    <!-- ===== WORK / 3D GALLERY ===== -->
     <section id="work" class="gallery-section">
       <div class="wrap">
         <div class="head rv" style="text-align:center;margin-inline:auto;">
           <h2>A look at the work.</h2>
-          <p>Drag to explore the gallery. Click any card to watch it on Instagram.</p>
+          <p>Drag to rotate the gallery. Click any video to watch it on Instagram.</p>
         </div>
-      </div>
-
-      <div class="carousel-wrap rv" id="carouselWrap" aria-label="3D video carousel">
-        <div class="carousel-stage" id="carouselStage"></div>
-      </div>
-
-      <div style="text-align:center;margin-top:3rem;">
-        <a class="btn ghost" href="https://www.instagram.com/insidethesystems/" target="_blank" rel="noopener">See every post on Instagram</a>
+        <div class="gallery-wrap rv" id="galleryWrap" aria-label="3D rotating video gallery">
+          <div class="gallery-ring" id="galleryRing"></div>
+        </div>
+        <div style="text-align:center;margin-top:2.5rem;">
+          <a class="btn ghost" href="https://www.instagram.com/insidethesystems/" target="_blank" rel="noopener">See every post on Instagram</a>
+        </div>
       </div>
     </section>
 
@@ -602,124 +1011,101 @@
 
     /* ===== EDIT YOUR WORK HERE =====
        cat: "Video with sound" | "Creative visual" | "History story"
-       src: path to an mp4 in your repo (leave "" to use img)
-       img: thumbnail image URL
+       src: path to an mp4 in your repo, e.g. "videos/heart.mp4"
+       img: path to a thumbnail image (used in gallery + marquee if no video)
        url: custom link (optional, defaults to Instagram) */
     const works = [
       {
         t: "The heartbeat nobody sees",
         cat: "Video with sound",
         src: "",
-        img: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&q=80&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&q=80&auto=format&fit=crop",
         g: "radial-gradient(circle at 30% 25%,#a8327a,#12061a 72%)"
       },
       {
         t: "Rome in one night",
         cat: "History story",
         src: "",
-        img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80&auto=format&fit=crop",
         g: "radial-gradient(circle at 70% 25%,#5a3fc9,#0a0720 72%)"
       },
       {
         t: "Light through water",
         cat: "Creative visual",
         src: "",
-        img: "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?w=800&q=80&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?w=600&q=80&auto=format&fit=crop",
         g: "radial-gradient(circle at 40% 30%,#c2507a,#14060f 72%)"
       },
       {
         t: "The last day of Pompeii",
         cat: "History story",
         src: "",
-        img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80&auto=format&fit=crop",
         g: "radial-gradient(circle at 60% 70%,#7a3fa8,#0e0618 72%)"
       },
       {
         t: "Neurons at 3 a.m.",
         cat: "Video with sound",
         src: "",
-        img: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&q=80&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80&auto=format&fit=crop",
         g: "radial-gradient(circle at 25% 65%,#3a4ac9,#07082a 72%)"
       },
       {
         t: "Colour in motion",
         cat: "Creative visual",
         src: "",
-        img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&q=80&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&q=80&auto=format&fit=crop",
         g: "radial-gradient(circle at 70% 60%,#d06a8a,#160a12 72%)"
       },
       {
         t: "Silk Road, explained",
         cat: "History story",
         src: "",
-        img: "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?w=800&q=80&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?w=600&q=80&auto=format&fit=crop",
         g: "radial-gradient(circle at 35% 35%,#6a3fd0,#0a0618 72%)"
       },
       {
         t: "Inside a single breath",
         cat: "Video with sound",
         src: "",
-        img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80&auto=format&fit=crop",
         g: "radial-gradient(circle at 65% 30%,#b04a9a,#14081a 72%)"
       }
     ];
     const IG = "https://www.instagram.com/insidethesystems/";
 
-    /* ===== CYLINDRICAL CAROUSEL (mesh3d-inspired) ===== */
-    (function initCarousel() {
-      const wrap = document.getElementById('carouselWrap');
-      const stage = document.getElementById('carouselStage');
-      if (!wrap || !stage) return;
-
+    /* ===== 3D GALLERY (mesh3d.gallery inspired) ===== */
+    (function initGallery() {
+      const wrap = document.getElementById('galleryWrap');
+      const ring = document.getElementById('galleryRing');
       const items = works;
       const count = items.length;
+      const angleStep = 360 / count;
 
-      const arc = 260;
-      const angleStep = arc / (count - 1);
-
-      const getRadius = () => {
-        const cardW = stage.querySelector('.carousel-item')?.offsetWidth || 300;
-        return Math.max(cardW * 1.9, 520);
-      };
-
-      stage.innerHTML = items.map((w, i) => {
+      // Build gallery items with dummy images
+      ring.innerHTML = items.map((w, i) => {
+        const angle = i * angleStep;
         const media = w.src
           ? `<video src="${w.src}" muted loop autoplay playsinline preload="metadata"></video>`
           : `<img src="${w.img}" alt="${w.t}" loading="lazy">`;
-        return `<a class="carousel-item" href="${w.url || IG}" target="_blank" rel="noopener"
-          draggable="false" data-i="${i}" aria-label="${w.t} — open on Instagram">
+        return `<a class="gallery-item" href="${w.url || IG}" target="_blank" rel="noopener" draggable="false" style="--g:${w.g}; transform: rotateY(${angle}deg) translateZ(400px);" aria-label="${w.t} — open on Instagram">
           ${media}
-          <span class="meta">
+          <span style="position:relative;z-index:1;">
             <h3>${w.t}</h3>
             <small>${w.cat}</small>
+            <span class="go">Open on Instagram ↗</span>
           </span>
         </a>`;
       }).join('');
 
-      const cards = [...stage.children];
+      const cards = [...ring.children];
+      let rot = 0, vel = 0, drag = false, moved = 0, lastX = 0, hover = false;
+      const radius = 400;
 
-      function layout() {
-        const R = getRadius();
-        cards.forEach((card, i) => {
-          const a = -arc / 2 + i * angleStep;
-          card.style.transform = `rotateY(${a}deg) translateZ(${R}px)`;
-        });
-        stage.dataset.radius = R;
-      }
-
-      let rot = 0;
-      let vel = 0;
-      let drag = false;
-      let moved = 0;
-      let lastX = 0;
-      let hover = false;
-      const maxRot = 30;
-
-      layout();
-      window.addEventListener('resize', layout);
-
+      // Mouse / touch drag
       const down = (e) => {
-        drag = true; moved = 0;
+        drag = true;
+        moved = 0;
         lastX = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
         wrap.style.cursor = 'grabbing';
       };
@@ -729,48 +1115,48 @@
         const dx = x - lastX;
         lastX = x;
         moved += Math.abs(dx);
-        vel = dx * 0.12;
+        vel = dx * 0.25;
         rot += vel;
       };
       const up = () => {
         drag = false;
         wrap.style.cursor = 'grab';
       };
+
       wrap.addEventListener('pointerdown', down);
       window.addEventListener('pointermove', move);
       window.addEventListener('pointerup', up);
       wrap.addEventListener('mouseenter', () => hover = true);
       wrap.addEventListener('mouseleave', () => hover = false);
 
-      stage.addEventListener('click', (e) => {
-        if (moved > 6) e.preventDefault();
+      // Prevent click after drag
+      ring.addEventListener('click', (e) => {
+        if (moved > 8) e.preventDefault();
       });
 
+      // Animation loop
       let visible = true;
       new IntersectionObserver(es => visible = es[0].isIntersecting).observe(wrap);
 
-      function tick() {
+      function animate() {
         if (visible) {
           if (!drag) {
             rot += vel;
-            vel *= 0.92;
-            if (!still) rot += hover ? 0.02 : 0.06;
+            vel *= 0.94;
+            if (!still) rot += hover ? 0.06 : 0.18;
           }
-          if (rot > maxRot) rot += (maxRot - rot) * 0.08;
-          if (rot < -maxRot) rot += (-maxRot - rot) * 0.08;
+          ring.style.transform = `translateZ(-${radius}px) rotateX(-4deg) rotateY(${-rot}deg)`;
 
-          const R = +stage.dataset.radius || 500;
-          stage.style.transform = `translateZ(-${R}px) rotateX(-6deg) rotateY(${-rot}deg)`;
-
+          // Dynamic opacity based on angle (front = 1, back = 0.3)
           cards.forEach((card, i) => {
-            const a = -arc / 2 + i * angleStep - rot;
+            const a = ((i * angleStep - rot) % 360 + 540) % 360 - 180;
             const f = (Math.cos(a * Math.PI / 180) + 1) / 2;
-            card.style.opacity = (0.35 + 0.65 * f).toFixed(2);
+            card.style.opacity = (0.3 + 0.7 * f).toFixed(2);
           });
         }
-        requestAnimationFrame(tick);
+        requestAnimationFrame(animate);
       }
-      tick();
+      animate();
     })();
 
     /* ===== MARQUEE (with dummy images) ===== */
