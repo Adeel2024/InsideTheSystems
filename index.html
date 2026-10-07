@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inside the Systems — Cinematic Videos, Visuals & History Stories</title>
+<meta name="description" content="Cinematic videos with sound, creative visuals and history stories. $200 per minute of finished video.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080c12;--bg2:#0e141d;--line:#202b3a;--text:#eaeef3;--mute:#8d9bad;--gold:#ffb454;--ice:#6ad4e8;
+--display:'Bricolage Grotesque',system-ui,sans-serif;--body:'Figtree',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);line-height:1.04;letter-spacing:-.025em}
+::selection{background:var(--gold);color:#1a1000}
+
+header{position:fixed;inset:0 0 auto;z-index:20;backdrop-filter:blur(14px);background:linear-gradient(#080c12d9,#080c1200)}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:800 1.05rem var(--display);display:flex;align-items:center;gap:.6rem}
+.logo i{width:.65rem;height:.65rem;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 #ffb45490;animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 12px #ffb45400}100%{box-shadow:0 0 0 0 #ffb45400}}
+nav ul{display:flex;gap:2rem;list-style:none;font-size:.95rem;color:var(--mute)}
+nav ul a:hover{color:var(--text)}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:999px;font-weight:600;font-size:.95rem;background:var(--gold);color:#1a1000;border:1px solid var(--gold);cursor:pointer;font-family:inherit;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px #ffb45440}
+.btn.ghost{background:none;color:var(--text);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--gold);box-shadow:none}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:7rem 0 3rem;overflow:hidden}
+.hero::before{content:"";position:absolute;width:60vmax;height:60vmax;left:50%;top:10%;translate:-50% 0;border-radius:50%;
+background:radial-gradient(circle,#ffb45424,#6ad4e810 45%,transparent 70%);animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{translate:-35% 12%;scale:1.15}}
+.hero .wrap{position:relative;text-align:center}
+.hero h1{font-size:clamp(3rem,9.5vw,8rem);font-weight:800;max-width:12ch;margin:0 auto}
+.hero h1 span{display:inline-block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 span:nth-child(2){animation-delay:.12s}.hero h1 span:nth-child(3){animation-delay:.24s}.hero h1 span:nth-child(4){animation-delay:.36s}
+.hero p{max-width:34rem;margin:1.6rem auto 2.2rem;color:var(--mute);font-size:1.15rem;animation:rise .9s .5s both}
+.hero .row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;animation:rise .9s .65s both}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}}
+
+/* marquee */
+.marquee{position:relative;margin-top:4rem;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;gap:1rem;width:max-content;animation:slide 45s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.track .reel{width:150px;flex:none}
+
+/* reels */
+.reel{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;border:1px solid var(--line);display:flex;align-items:flex-end;padding:1rem;background:#05080c;isolation:isolate;cursor:pointer;text-align:left;color:inherit;font:inherit;transition:transform .35s,border-color .35s}
+.reel::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--g);transition:transform .7s}
+.reel::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent 40%,#05080cf0)}
+.reel:hover{transform:translateY(-6px);border-color:var(--gold)}
+.reel:hover::before{transform:scale(1.1)}
+.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.reel h3{font-size:1.05rem;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+.reel small{display:block;margin-top:.25rem;color:var(--mute);font-size:.82rem}
+.reel .play{position:absolute;top:.8rem;right:.8rem;width:2.2rem;height:2.2rem;border-radius:50%;background:#080c12b0;backdrop-filter:blur(6px);display:grid;place-items:center;font-size:.7rem;transition:background .3s,color .3s}
+.reel:hover .play{background:var(--gold);color:#1a1000}
+.track .reel h3{font-size:.9rem}
+
+section{padding:6.5rem 0}
+.head{max-width:40rem;margin-bottom:2.6rem}
+.head h2{font-size:clamp(2rem,4.6vw,3.4rem);font-weight:800}
+.head p{margin-top:1rem;color:var(--mute)}
+
+/* work */
+#work{background:var(--bg2)}
+.tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem}
+.tabs button{padding:.6rem 1.2rem;border-radius:999px;border:1px solid var(--line);background:none;color:var(--mute);font:500 .95rem var(--body);cursor:pointer;transition:.25s}
+.tabs button:hover{color:var(--text);border-color:var(--mute)}
+.tabs button[aria-pressed=true]{background:var(--text);color:#080c12;border-color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.grid .reel{animation:pop .5s both}
+@keyframes pop{from{opacity:0;transform:scale(.94)}}
+.more{margin-top:2.2rem}
+
+/* pricing */
+.price-box{display:grid;grid-template-columns:1.1fr 1fr;gap:1.2rem}
+.card{border:1px solid var(--line);border-radius:22px;padding:2.4rem}
+.calc{background:linear-gradient(160deg,#ffb4541a,transparent 60%)}
+.big{font:800 clamp(3.4rem,9vw,6rem)/1 var(--display);letter-spacing:-.04em}
+.big small{font:400 1.1rem var(--body);color:var(--mute);letter-spacing:0;margin-left:.4rem}
+.rate{color:var(--mute);margin-top:.6rem}
+.calc label{display:flex;justify-content:space-between;margin:2.2rem 0 .8rem;font-weight:600}
+input[type=range]{width:100%;accent-color:var(--gold);height:1.5rem}
+.total{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+.total strong{font:800 2.4rem var(--display);letter-spacing:-.03em;color:var(--gold)}
+.incl h3{font-size:1.3rem;margin-bottom:1.2rem}
+.incl ul{list-style:none;color:var(--mute)}
+.incl li{padding:.55rem 0 .55rem 1.7rem;position:relative;border-bottom:1px solid var(--line)}
+.incl li:last-child{border:0}
+.incl li::before{content:"";position:absolute;left:0;top:1.05rem;width:.55rem;height:.55rem;border-radius:50%;background:var(--ice)}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;counter-reset:s}
+.steps div{border-top:2px solid var(--line);padding-top:1.2rem;counter-increment:s;position:relative}
+.steps div::after{content:"";position:absolute;top:-2px;left:0;height:2px;width:0;background:var(--gold);transition:width 1.2s .2s}
+.steps.in div::after{width:100%}
+.steps div::before{content:counter(s);font:800 1rem var(--display);color:var(--gold)}
+.steps h3{font-size:1.25rem;margin:.4rem 0 .5rem}
+.steps p{color:var(--mute);font-size:.97rem}
+
+.cta{text-align:center;border-top:1px solid var(--line)}
+.cta h2{font-size:clamp(2.4rem,6.5vw,5rem);font-weight:800;max-width:14ch;margin:0 auto 1.6rem}
+.cta p{color:var(--mute);margin-bottom:2.2rem}
+footer{padding:2rem 0;color:var(--mute);font-size:.9rem;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+/* modal */
+dialog{border:0;background:none;margin:auto;max-height:92vh;color:var(--text);overflow:visible}
+dialog::backdrop{background:#04060acc;backdrop-filter:blur(8px)}
+dialog video{height:min(82vh,780px);aspect-ratio:9/16;border-radius:18px;background:#000;display:block}
+dialog .x{position:absolute;top:-2.6rem;right:0;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+dialog .soon{padding:2rem;border:1px solid var(--line);border-radius:18px;background:var(--bg2);text-align:center;max-width:22rem}
+dialog .soon h3{margin-bottom:.6rem}dialog .soon p{color:var(--mute);margin-bottom:1.2rem}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  nav ul{display:none}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .price-box{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  section{padding:4.5rem 0}
+}
+@media(max-width:480px){.steps{grid-template-columns:1fr}.card{padding:1.6rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap" aria-label="Main">
+    <a href="#top" class="logo"><i></i>Inside the Systems</a>
+    <ul><li><a href="#work">Work</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#process">Process</a></li></ul>
+    <a class="btn" href="#contact">Start a project</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <h1><span>Stories</span> <span>worth</span> <span>watching</span> <span>twice.</span></h1>
+      <p>Cinematic videos with sound, creative visuals and history stories. Made frame by frame, for $200 a minute.</p>
+      <div class="row"><a class="btn" href="#work">Watch our work</a><a class="btn ghost" href="#pricing">See pricing</a></div>
+    </div>
+    <div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="head rv"><h2>A look at the work.</h2><p>Tap any video to watch it with sound.</p></div>
+      <div class="tabs rv" id="tabs" role="group" aria-label="Filter work">
+        <button aria-pressed="true" data-f="all">All</button>
+        <button aria-pressed="false" data-f="Video with sound">Videos with sound</button>
+        <button aria-pressed="false" data-f="Creative visual">Creative visuals</button>
+        <button aria-pressed="false" data-f="History story">History stories</button>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="more"><a class="btn ghost" href="https://www.instagram.com/insidethesystems/" target="_blank" rel="noopener">See every post on Instagram</a></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <div class="head rv"><h2>One price. No surprises.</h2><p>You pay for the length of the finished video. Slide to see your total.</p></div>
+      <div class="price-box rv">
+        <div class="card calc">
+          <div class="big">$200<small>per minute</small></div>
+          <p class="rate">Finished video, sound included.</p>
+          <label for="mins"><span>Video length</span><span id="mLabel">2 min</span></label>
+          <input id="mins" type="range" min="0.5" max="10" step="0.5" value="2">
+          <div class="total"><span>Estimated total</span><strong id="total">$400</strong></div>
+        </div>
+        <div class="card incl">
+          <h3>Every video includes</h3>
+          <ul>
+            <li>Original visuals made for your story</li>
+            <li>Sound design and music</li>
+            <li>Vertical 9:16 or wide 16:9 export</li>
+            <li>Two rounds of revisions</li>
+            <li>Full rights to publish anywhere</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="head rv"><h2>How it works.</h2></div>
+      <div class="steps rv" id="steps">
+        <div><h3>Send your idea</h3><p>A topic, a script or just a rough thought.</p></div>
+        <div><h3>We confirm the plan</h3><p>Length, style and delivery date, with a fixed price.</p></div>
+        <div><h3>You review</h3><p>Two rounds of changes until it feels right.</p></div>
+        <div><h3>Publish</h3><p>Download the final file and post it anywhere.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta">
+    <div class="wrap rv">
+      <h2>Have a story to tell?</h2>
+      <p>Message us your idea and we'll reply within a day.</p>
+      <a class="btn" href="mailto:hello@example.com">hello@example.com</a>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Inside the Systems</span><a href="https://www.instagram.com/insidethesystems/" target="_blank" rel="noopener">Instagram</a></div></footer>
+
+<dialog id="dlg"><button class="x" aria-label="Close">×</button><div id="dlgBody"></div></dialog>
+
+<script>
+/* ===== EDIT YOUR WORK HERE =====
+   cat: "Video with sound" | "Creative visual" | "History story"
+   src: path to an mp4 in your repo, e.g. "videos/heart.mp4" (leave "" until you add one)  */
+const works=[
+ {t:"The heartbeat nobody sees",cat:"Video with sound",src:"",g:"radial-gradient(circle at 30% 25%,#8a2433,#12060a 72%)"},
+ {t:"Rome in one night",cat:"History story",src:"",g:"radial-gradient(circle at 70% 25%,#a8691f,#120c05 72%)"},
+ {t:"Light through water",cat:"Creative visual",src:"",g:"radial-gradient(circle at 40% 30%,#1f6f8a,#050e14 72%)"},
+ {t:"The last day of Pompeii",cat:"History story",src:"",g:"radial-gradient(circle at 60% 70%,#8a3b1f,#120805 72%)"},
+ {t:"Neurons at 3 a.m.",cat:"Video with sound",src:"",g:"radial-gradient(circle at 25% 65%,#3a2a8a,#08061a 72%)"},
+ {t:"Colour in motion",cat:"Creative visual",src:"",g:"radial-gradient(circle at 70% 60%,#1f8a63,#051410 72%)"},
+ {t:"Silk Road, explained",cat:"History story",src:"",g:"radial-gradient(circle at 35% 35%,#8a7a1f,#121005 72%)"},
+ {t:"Inside a single breath",cat:"Video with sound",src:"",g:"radial-gradient(circle at 65% 30%,#1f4f8a,#050b14 72%)"}
+];
+const IG="https://www.instagram.com/insidethesystems/";
+const card=(w,i,d)=>`<button class="reel" data-i="${i}" style="--g:${w.g};animation-delay:${d}s">${w.src?`<video src="${w.src}" muted loop playsinline preload="metadata"></video>`:''}<span class="play">▶</span><span><h3>${w.t}</h3><small>${w.cat}</small></span></button>`;
+const grid=document.getElementById('grid');
+function render(f){let n=0;grid.innerHTML=works.map((w,i)=>(f==='all'||w.cat===f)?card(w,i,(n++)*.06):'').join('');}
+render('all');
+document.getElementById('track').innerHTML=[...works,...works].map(w=>`<div class="reel" style="--g:${w.g}"><span><h3>${w.t}</h3><small>${w.cat}</small></span></div>`).join('');
+
+document.getElementById('tabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+ document.querySelectorAll('#tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));render(b.dataset.f)};
+
+/* hover-preview + open modal */
+grid.addEventListener('mouseover',e=>{const v=e.target.closest('.reel')?.querySelector('video');v&&v.play().catch(()=>{})});
+grid.addEventListener('mouseout',e=>{const v=e.target.closest('.reel')?.querySelector('video');v&&v.pause()});
+const dlg=document.getElementById('dlg'),body=document.getElementById('dlgBody');
+grid.onclick=e=>{const r=e.target.closest('.reel');if(!r)return;const w=works[r.dataset.i];
+ body.innerHTML=w.src?`<video src="${w.src}" controls autoplay playsinline></video>`:
+ `<div class="soon"><h3>${w.t}</h3><p>Watch this one with sound on Instagram.</p><a class="btn" href="${IG}" target="_blank" rel="noopener">Open Instagram</a></div>`;
+ dlg.showModal()};
+const close=()=>{dlg.close();body.innerHTML=''};
+dlg.querySelector('.x').onclick=close;
+dlg.addEventListener('click',e=>{if(e.target===dlg)close()});
+dlg.addEventListener('close',()=>body.innerHTML='');
+
+/* price calculator */
+const m=document.getElementById('mins');
+const upd=()=>{const v=+m.value;document.getElementById('mLabel').textContent=v+' min';
+ document.getElementById('total').textContent='$'+(v*200).toLocaleString()};
+m.oninput=upd;upd();
+
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
