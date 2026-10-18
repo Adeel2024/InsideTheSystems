@@ -130,18 +130,13 @@ input[type=range]{width:100%;accent-color:var(--gold);height:1.5rem}
 .incl li::before{content:"";position:absolute;left:0;top:1.05rem;width:.55rem;height:.55rem;border-radius:50%;background:var(--ice)}
 
 /* about */
-.about{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
-.about h2{font-size:clamp(2rem,4.6vw,3.4rem);font-weight:800}
-.about p{color:var(--mute);margin-top:1.1rem}
-.about p b{color:var(--text);font-weight:600}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.fact{border:1px solid var(--line);border-radius:20px;padding:1.5rem;background:linear-gradient(160deg,#ffb45410,transparent 70%);transition:transform .3s,border-color .3s}
-.fact:hover{transform:translateY(-4px);border-color:var(--gold)}
-.fact strong{display:block;font:800 2rem/1 var(--display);color:var(--gold);letter-spacing:-.03em}
-.fact span{display:block;margin-top:.5rem;color:var(--mute);font-size:.9rem;line-height:1.4}
-.about .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem}
-.about .tags span{padding:.4rem .9rem;border:1px solid var(--line);border-radius:999px;font-size:.85rem;color:var(--text)}
-
+#about .eyebrow{display:flex;justify-content:center}
+.story{max-width:900px;margin:0 auto;text-align:center;font:600 clamp(1.4rem,3.6vw,2.5rem)/1.4 var(--display);letter-spacing:-.02em;color:var(--text)}
+.story .wd{display:inline-block;opacity:.18;transform:translateY(10px);transition:opacity .6s,transform .6s;transition-delay:calc(var(--i)*28ms)}
+.story.in .wd{opacity:1;transform:none}
+.story em{font-style:normal;color:var(--gold)}
+.story.in .wd.hl{text-shadow:0 0 28px #ffb45455}
+@media(prefers-reduced-motion:reduce){.story .wd{opacity:1;transform:none}}
 /* process */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;counter-reset:s}
 .steps div{border-top:2px solid var(--line);padding-top:1.2rem;counter-increment:s;position:relative}
@@ -278,6 +273,10 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
 #fstat{min-height:1.4em;font-size:.92rem;color:var(--ice)}
 #fstat.err{color:#ff8a8a}
 
+#fopts{display:flex;flex-wrap:wrap;gap:.6rem}
+#fopts a,#fopts button{padding:.6rem 1rem;border-radius:999px;border:1px solid var(--line);background:none;color:var(--text);font:600 .85rem var(--body);cursor:pointer;transition:.25s}
+#fopts a:hover,#fopts button:hover{border-color:var(--gold);color:var(--gold)}
+#fopts a.main{background:var(--gold);border-color:var(--gold);color:#1a1000}
 /* sticky mobile CTA */
 .sticky{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:18;display:none;transform:translateY(160%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
 .sticky.show{transform:none}
@@ -286,11 +285,11 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
 </style>
 </head>
 <body class="locked">
-<div id="intro" aria-hidden="true"><div class="glow"></div><div class="rings"><i></i><i></i><i></i></div><img id="introLogo" src="insidethesystem.jfif" alt=""><div class="name">Inside the Systems</div></div>
+<div id="intro" aria-hidden="true"><div class="glow"></div><div class="rings"><i></i><i></i><i></i></div><img id="introLogo" src="Insidethesystem.jfif" alt=""><div class="name">Inside the Systems</div></div>
 <div class="progress" id="prog"></div><div class="cursor" id="cur"></div><div class="grain"></div>
 <header>
   <nav class="wrap" aria-label="Main">
-    <a href="#top" class="logo" id="navLogo"><i></i><img src="insidethesystem.jfif" alt="Inside the Systems logo"><span>Inside the Systems</span></a>
+    <a href="#top" class="logo" id="navLogo"><i></i><img src="Insidethesystem.jfif" alt="Inside the Systems logo"><span>Inside the Systems</span></a>
     <ul><li><a href="#about">About</a></li><li><a href="#work">Work</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#process">Process</a></li><li><a href="#faq">FAQ</a></li></ul>
     <a class="btn" href="#contact">Start a project</a>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
@@ -317,20 +316,9 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
   <div class="scrolltext" aria-hidden="true"><div>Videos with sound<b>✦</b>Creative visuals<b>✦</b>History stories<b>✦</b>Videos with sound<b>✦</b>Creative visuals<b>✦</b>History stories<b>✦</b></div></div>
 
   <section id="about">
-    <div class="wrap about">
-      <div class="rv">
-        <span class="eyebrow">About</span>
-        <h2>We turn big ideas into films you can feel.</h2>
-        <p><b>Inside the Systems</b> is a small creative studio making cinematic short videos with real sound design, striking visuals and carefully researched history stories.</p>
-        <p>Every piece is built from scratch for Reels, Shorts and TikTok, so it holds attention in the first second and keeps it to the last. You bring the idea; we handle the visuals, the sound and the story.</p>
-        <div class="tags"><span>Videos with sound</span><span>Creative visuals</span><span>History stories</span></div>
-      </div>
-      <div class="facts rv">
-        <div class="fact"><strong>9:16</strong><span>Made for phones and social feeds</span></div>
-        <div class="fact"><strong>$200</strong><span>Simple price per finished minute</span></div>
-        <div class="fact"><strong>100%</strong><span>Original visuals, no stock footage</span></div>
-        <div class="fact"><strong>2</strong><span>Revision rounds included</span></div>
-      </div>
+    <div class="wrap">
+      <span class="eyebrow rv">About us</span>
+      <p class="story rv" id="story">We create <em>cinematic videos</em> with real sound design, <em>creative visuals</em> and carefully researched <em>history stories</em>. Every piece is built from scratch for Reels, Shorts and TikTok, so it holds attention in the first second and keeps it to the last. You bring the idea, and we handle the visuals, the sound and the story, for a simple <em>$200 per minute</em>.</p>
     </div>
   </section>
 
@@ -437,6 +425,7 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
         <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="full"><button class="btn" type="submit">Send my idea</button></div>
         <p class="full" id="fstat" role="status" aria-live="polite"></p>
+        <div class="full opts" id="fopts" hidden></div>
       </form>
     </div>
   </section>
@@ -579,6 +568,16 @@ addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;mouse.x=e.clientX;m
  b.onclick=()=>set(!m.classList.contains('open'));
  m.addEventListener('click',e=>{if(e.target.closest('a'))set(false)})})();
 
+/* about paragraph: split into words for a staged reveal */
+(()=>{const p=document.getElementById('story');let i=0;
+ const walk=(node,hl)=>{[...node.childNodes].forEach(n=>{
+  if(n.nodeType===3){const f=document.createDocumentFragment();
+   n.textContent.split(/(\s+)/).forEach(t=>{if(!t)return;if(/^\s+$/.test(t)){f.appendChild(document.createTextNode(' '));return}
+    const sp=document.createElement('span');sp.className='wd'+(hl?' hl':'');sp.style.setProperty('--i',i++);sp.textContent=t;f.appendChild(sp)});
+   node.replaceChild(f,n)}
+  else if(n.nodeType===1)walk(n,hl||n.tagName==='EM')})};
+ walk(p,false)})();
+
 /* ===== hero typed intro ===== */
 (()=>{const el=document.getElementById('typed'),words=['cinematic videos','creative visuals','history stories','films with real sound'];
  if(still){el.textContent=words[0];return}
@@ -640,9 +639,19 @@ const MAIL="Insidethesystem5066@gmail.com";
     if(!r.ok)throw 0;f.reset();len.value=2;calc();say('Thank you! We will reply within a day.')}
    catch{say('Could not send. Please email '+MAIL+' directly.',true)}
    btn.disabled=false;return}
+  const subject='New project: '+d.type+' ('+d.minutes+' min)';
   const body=`Name: ${d.name}\nEmail: ${d.email}\nType: ${d.type}\nLength: ${d.minutes} min (about ${d.estimated_price})\nDeadline: ${d.deadline||'-'}\n\n${d.message}`;
-  say('Opening your email app...');
-  location.href=`mailto:${MAIL}?subject=${encodeURIComponent('New project: '+d.type+' ('+d.minutes+' min)')}&body=${encodeURIComponent(body)}`;
+  const q=encodeURIComponent,to=encodeURIComponent(MAIL);
+  const gmail=`https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${q(subject)}&body=${q(body)}`;
+  const outlook=`https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${q(subject)}&body=${q(body)}`;
+  const yahoo=`https://compose.mail.yahoo.com/?to=${to}&subject=${q(subject)}&body=${q(body)}`;
+  const app=`mailto:${MAIL}?subject=${q(subject)}&body=${q(body)}`;
+  /* open Gmail in the browser right away (must happen inside the click) */
+  window.open(gmail,'_blank','noopener');
+  say('We opened Gmail in a new tab with your message ready. Just press Send there. Use another mail service instead if you prefer:');
+  const o=document.getElementById('fopts');o.hidden=false;
+  o.innerHTML=`<a class="main" href="${gmail}" target="_blank" rel="noopener">Gmail</a><a href="${outlook}" target="_blank" rel="noopener">Outlook</a><a href="${yahoo}" target="_blank" rel="noopener">Yahoo Mail</a><a href="${app}">Email app</a><button type="button" id="cp">Copy message</button>`;
+  document.getElementById('cp').onclick=async e=>{try{await navigator.clipboard.writeText(`To: ${MAIL}\nSubject: ${subject}\n\n${body}`);e.target.textContent='Copied ✓'}catch{e.target.textContent='Copy failed'}};
  });
 })();
 
