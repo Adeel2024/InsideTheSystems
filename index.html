@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Inside the Systems — Cinematic Videos, Visuals & History Stories</title>
-<meta name="description" content="Cinematic videos with sound, creative visuals and history stories. Starter videos from $75, then $200 per minute. Brand sponsorships on our Instagram channel.">
+<meta name="description" content="Cinematic videos with sound, creative visuals and history stories. Videos from $75 per minute. Brand sponsorships on our Instagram channel.">
 <meta name="theme-color" content="#080c12">
 <link rel="icon" href="logo.jpg">
 <link rel="apple-touch-icon" href="logo.jpg">
@@ -385,7 +385,7 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
     <div class="wrap">
       <div class="kicker" aria-label="We create cinematic videos, creative visuals and history stories"><span>We create</span><b id="typed" aria-hidden="true">cinematic videos</b><i class="caret" aria-hidden="true"></i></div>
       <h1 id="h1" aria-label="Stories worth watching twice.">Stories worth watching twice.</h1>
-      <p class="story" id="story">We create <em>cinematic videos</em> with real sound design, <em>creative visuals</em> and carefully researched <em>history stories</em>. Every piece is built from scratch for Reels, Shorts and TikTok, so it holds attention in the first second and keeps it to the last. You bring the idea, and we handle the visuals, the sound and the story, starting from <em>$75</em> for your first video.</p>
+      <p class="story" id="story">We create <em>cinematic videos</em> with real sound design, <em>creative visuals</em> and carefully researched <em>history stories</em>. Every piece is built from scratch for Reels, Shorts and TikTok, so it holds attention in the first second and keeps it to the last. You bring the idea, and we handle the visuals, the sound and the story, at just <em>$75 per minute</em>.</p>
       <div class="row"><a class="btn" href="#work">Watch our work</a><a class="btn ghost" href="#pricing">See pricing</a></div>
     </div>
     <div class="marquee" id="marquee" aria-label="Scrolling video strip. Drag or use the arrows.">
@@ -442,8 +442,11 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
         <a class="btn ghost" href="https://www.instagram.com/insidethesystems/" target="_blank" rel="noopener">See more on Instagram</a>
       </div>
       <div class="wvid rv">
-        <div class="player" id="player" style="aspect-ratio:9/16"></div>
-        <div class="pcap"><strong id="pTitle"></strong><span id="pDesc"></span></div>
+        <div class="player" id="player" style="aspect-ratio:9/16">
+          <video id="featuredVideo" src="viddemo.mp4" muted loop autoplay playsinline controls controlslist="nodownload" preload="metadata" aria-label="Featured film"></video>
+          <button class="sound" id="snd" type="button">🔊 Sound on</button>
+        </div>
+        <div class="pcap"><strong>Featured film</strong><span>Tap the sound button to hear it</span></div>
       </div>
     </div>
   </section>
@@ -466,7 +469,7 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
 
   <section id="pricing">
     <div class="wrap">
-      <div class="head rv" style="text-align:center;margin-inline:auto"><span class="eyebrow">Video production pricing</span><h2>Start small. Go cinematic.</h2><p>Try us with one short video, or use our standard rate for longer, richer films.</p></div>
+      <div class="head rv" style="text-align:center;margin-inline:auto"><span class="eyebrow">Video production pricing</span><h2>Start small. Go cinematic.</h2><p>Try us with one short video, or or choose a longer film at $75 per minute.</p></div>
       <div class="plans rv">
         <div class="card starter">
           <span class="badge">Starter package</span>
@@ -474,15 +477,15 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
           <p class="rate">A first video, clearly scoped.</p>
           <ul class="tickl"><li>One video, up to 60 seconds</li><li>One topic or concept</li><li>Vertical 9:16 for Reels, Shorts and TikTok</li><li>Sound design and music</li><li>Two rounds of revisions</li></ul>
           <a class="btn" href="#contact" data-service="production" data-minutes="1">Order the starter</a>
-          <p class="fine">Longer videos, extra formats or several topics are priced at the standard rate.</p>
+          <p class="fine">Longer videos are $75 for every extra minute.</p>
         </div>
         <div class="card calc">
-          <div class="big">$200<small>per minute</small></div>
-          <p class="rate">Standard rate for longer videos, sound included.</p>
+          <div class="big">$75<small>per minute</small></div>
+          <p class="rate">Simple pricing: $75 for every minute of finished video, sound included.</p>
           <label for="mins"><span>Video length</span><span id="mLabel">2 min</span></label>
-          <input id="mins" type="range" min="0.5" max="10" step="0.5" value="2">
+          <input id="mins" type="range" min="1" max="10" step="0.5" value="2">
           <div class="chips" id="chips"><button data-m="1">1 min</button><button data-m="2">2 min</button><button data-m="5">5 min</button><button data-m="10">10 min</button></div>
-          <div class="total"><span>Estimated total</span><strong id="total">$400</strong></div>
+          <div class="total"><span>Estimated total</span><strong id="total">$150</strong></div>
           <p class="fine" id="pNote"></p>
         </div>
       </div>
@@ -530,7 +533,7 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
       <div class="head rv" style="text-align:center;margin-inline:auto"><span class="eyebrow">FAQ</span><h2>Good questions.</h2></div>
       <div class="faq rv">
         <details><summary>What do I need to send you?</summary><p>Just an idea. A topic, a rough script or a few references is enough. If you already have a finished script, send that and we will build around it.</p></details>
-        <details><summary>How is the price worked out?</summary><p>Your first video can be our Starter package: one video up to 60 seconds for $75. Longer or more detailed videos are $200 per minute, sound design and music included. You get a fixed price before we start, so there are no surprises later.</p></details>
+        <details><summary>How is the price worked out?</summary><p>Your first video can be our Starter package: one video up to 60 seconds for $75. Longer videos are $75 per minute, sound design and music included. You get a fixed price before we start, so there are no surprises later.</p></details>
         <details><summary>What is the difference between your channel and your service?</summary><p>Inside the Systems is our own Instagram channel, where we publish factual history stories and creative visuals. Separately, we make videos for clients as a production service. When you order a video, it is made for your own channel or brand.</p></details>
         <details><summary>Can my brand sponsor your channel?</summary><p>Yes. Sponsorships on our own Instagram are quoted individually, based on reach, audience and deliverables. Send us a message and tell us about your brand.</p></details>
         <details><summary>How long does a video take?</summary><p>It depends on the length and style. We confirm a delivery date with you before we begin.</p></details>
@@ -558,7 +561,7 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
         <div><label for="fe">Your email</label><input id="fe" name="email" type="email" autocomplete="email" required></div>
         <div class="prodonly"><label for="ft">Type of video</label><select id="ft" name="type"><option>Video with sound</option><option>Creative visual</option><option>History story</option><option>Not sure yet</option></select></div>
         <div class="prodonly"><label for="fl">Length (minutes)</label><input id="fl" name="minutes" type="number" min="0.5" max="30" step="0.5" value="2" inputmode="decimal"></div>
-        <div class="full est prodonly"><span>Estimated price</span><strong id="fPrice">$400</strong></div>
+        <div class="full est prodonly"><span>Estimated price</span><strong id="fPrice">$150</strong></div>
         <div class="full"><label for="fd">Deadline (optional)</label><input id="fd" name="deadline" placeholder="e.g. end of next month"></div>
         <div class="full"><label for="fm">Your idea</label><textarea id="fm" name="message" required placeholder="Topic, story, references, where you will post it..."></textarea></div>
         <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -576,19 +579,22 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
 <script>
 const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const IG="https://www.instagram.com/insidethesystems/";
-/* pricing: up to 1 minute = $75 starter, longer = $200 per minute */
-const priceFor=v=>v<=0?0:(v<=1?75:Math.round(v*200));
+/* pricing: $75 per minute (minimum $75, which is the 1-minute starter) */
+const RATE=75;
+const priceFor=v=>v<=0?0:Math.max(RATE,v*RATE);
+const money=x=>"$"+(Number.isInteger(x)?x.toLocaleString():x.toFixed(2));
 const U=id=>`https://images.unsplash.com/${id}?w=800&q=80&auto=format&fit=crop`;
 
 /* ===== EDIT YOUR WORK HERE (src = mp4 path, url = specific reel link) ===== */
 const works=[
- {t:"Who Lives Here",cat:"Video with sound",src:"",img:"whl.jpeg",g:"radial-gradient(circle at 30% 25%,#8a2433,#12060a 72%)",url:"https://www.instagram.com/reel/DcUBFF2uFjw/?dlrf=MW92c3Rlcjl2aWg3eA=="},
- {t:"Venice History",cat:"History story",src:"",img:"Architechture.jpeg",g:"radial-gradient(circle at 70% 25%,#a8691f,#120c05 72%)",url:"https://www.instagram.com/reel/DbjPupaug4h/?exln=MWQ3YWVjdG03cWJsbQ=="},
- {t:"Pompeii's Secret",cat:"History story",src:"",img:"Pompei.jpeg",g:"radial-gradient(circle at 60% 70%,#8a3b1f,#120805 72%)",url:"https://www.instagram.com/reel/DcGfxISOZhK/?rpxt=aHpndHRkbW9weHJx"},
- {t:"Architecture",cat:"Video with sound",src:"",img:"chemis.jpeg",g:"radial-gradient(circle at 25% 65%,#3a2a8a,#08061a 72%)",url:"https://www.instagram.com/reel/DeAS3zJOLiq/?xtok=MXM3aGxwMmF3N2FwOQ=="},
- {t:"Lapis Lazuli",cat:"Creative visual",src:"",img:"Lapis.jpeg",g:"radial-gradient(circle at 70% 60%,#1f8a63,#051410 72%)",url:"https://www.instagram.com/reel/Ddbfkhiv-Cz/?mdxt=bm8wYjNsZG96a3Uw"},
- {t:"Izmik ceramics",cat:"History story",src:"",img:"izmik.jpeg",g:"radial-gradient(circle at 35% 35%,#8a7a1f,#121005 72%)",url:"https://www.instagram.com/reel/DehBDsyPRZ5/?exln=M3NheG9nbmduaDBn"},
- {t:"Cordoba",cat:"History story",src:"",img:"Cordoba.jpeg",g:"radial-gradient(circle at 65% 30%,#1f4f8a,#050b14 72%)",url:"https://www.instagram.com/reel/DehBDsyPRZ5/?exln=M3NheG9nbmduaDBn"}
+ {t:"The heartbeat nobody sees",cat:"Video with sound",src:"",img:U("photo-1518837695005-2083093ee35b"),g:"radial-gradient(circle at 30% 25%,#8a2433,#12060a 72%)"},
+ {t:"Rome in one night",cat:"History story",src:"",img:U("photo-1552832230-c0197dd311b5"),g:"radial-gradient(circle at 70% 25%,#a8691f,#120c05 72%)"},
+ {t:"Light through water",cat:"Creative visual",src:"",img:U("photo-1505144808419-1957a94ca61e"),g:"radial-gradient(circle at 40% 30%,#1f6f8a,#050e14 72%)"},
+ {t:"The last day of Pompeii",cat:"History story",src:"",img:U("photo-1552832230-c0197dd311b5"),g:"radial-gradient(circle at 60% 70%,#8a3b1f,#120805 72%)"},
+ {t:"Neurons at 3 a.m.",cat:"Video with sound",src:"",img:U("photo-1559757175-0eb30cd8c063"),g:"radial-gradient(circle at 25% 65%,#3a2a8a,#08061a 72%)"},
+ {t:"Colour in motion",cat:"Creative visual",src:"",img:U("photo-1541701494587-cb58502866ab"),g:"radial-gradient(circle at 70% 60%,#1f8a63,#051410 72%)"},
+ {t:"Silk Road, explained",cat:"History story",src:"",img:U("photo-1508921912186-1d1a45ebb3c1"),g:"radial-gradient(circle at 35% 35%,#8a7a1f,#121005 72%)"},
+ {t:"Inside a single breath",cat:"Video with sound",src:"",img:U("photo-1506126613408-eca07ce68773"),g:"radial-gradient(circle at 65% 30%,#1f4f8a,#050b14 72%)"}
 ];
 const media=w=>w.src?`<video src="${w.src}" muted loop autoplay playsinline preload="metadata"></video>`:`<img src="${w.img}" alt="${w.t}" loading="lazy" draggable="false">`;
 
@@ -647,7 +653,7 @@ const media=w=>w.src?`<video src="${w.src}" muted loop autoplay playsinline prel
 
 /* price calculator */
 const m=document.getElementById('mins');
-const upd=()=>{const v=+m.value;document.getElementById('mLabel').textContent=v+' min';document.getElementById('total').textContent='$'+priceFor(v).toLocaleString();const n=document.getElementById('pNote');if(n)n.textContent=v<=1?'Starter package applies: one video up to 60 seconds.':'Standard rate applies: $200 per minute.'};
+const upd=()=>{const v=+m.value;document.getElementById('mLabel').textContent=v+' min';document.getElementById('total').textContent=money(priceFor(v));const n=document.getElementById('pNote');if(n)n.textContent=v<=1?'1 minute = $75, the same as our Starter package.':v+' minutes × $75 = '+money(priceFor(v))+'.'};
 m.oninput=upd;upd();
 document.getElementById('chips').onclick=e=>{const b=e.target.closest('button');if(b){m.value=b.dataset.m;upd()}};
 
@@ -728,29 +734,16 @@ addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;mouse.x=e.clientX;m
   else if(c>0){c--;setTimeout(t,32)}
   else{del=false;w=(w+1)%words.length;setTimeout(t,350)}})()})();
 
-/* ===== FEATURED FILM — edit this block =====
-   src:    path to your mp4 (e.g. "videos/featured.mp4") OR a YouTube link
-   poster: optional image shown before play (e.g. "videos/featured.jpg")
-   ratio:  "16/9" for wide, "9/16" for vertical                              */
-const featured={src:"",poster:"",title:"Featured film",desc:"Coming soon",ratio:"9/16"};
+/* ===== FEATURED FILM =====
+   The video is embedded in the HTML above: <video id="featuredVideo" src="viddemo.mp4">
+   Keep viddemo.mp4 in the same folder as index.html. To use another file, change that src. */
 (()=>{
- const box=document.getElementById('player');
- document.getElementById('pTitle').textContent=featured.title;
- document.getElementById('pDesc').textContent=featured.desc;
- box.style.aspectRatio=featured.ratio;
- if(featured.ratio!=='9/16'){box.style.width='min(100%,720px)'}
- const yt=(featured.src.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/)||[])[1];
- const poster=featured.poster?`<img class="poster" src="${featured.poster}" alt="">`:'';
- if(!featured.src){
-  box.innerHTML=`<div class="ph"><div><div class="pbtn" aria-hidden="true">▶</div><b>Featured film</b><small>Coming soon</small></div></div>`;return}
- if(yt){
-  box.innerHTML=`<div class="ph click" role="button" tabindex="0" aria-label="Play ${featured.title}">${poster}<div><div class="pbtn">▶</div><b>${featured.title}</b></div></div>`;
-  const play=()=>box.innerHTML=`<iframe src="https://www.youtube.com/embed/${yt}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="${featured.title}"></iframe>`;
-  const ph=box.firstElementChild;ph.onclick=play;ph.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();play()}};return}
- box.innerHTML=`<video src="${featured.src}" ${featured.poster?`poster="${featured.poster}"`:''} muted loop autoplay playsinline controls controlslist="nodownload"></video><button class="sound" id="snd" type="button">🔊 Sound on</button>`;
- const v=box.querySelector('video'),b=document.getElementById('snd');
+ const box=document.getElementById('player'),v=document.getElementById('featuredVideo'),b=document.getElementById('snd');
  b.onclick=()=>{v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play().catch(()=>{})}b.textContent=v.muted?'🔊 Sound on':'🔇 Mute'};
+ v.addEventListener('volumechange',()=>{b.textContent=v.muted?'🔊 Sound on':'🔇 Mute'});
  new IntersectionObserver(es=>{if(!es[0].isIntersecting)v.pause();else v.play().catch(()=>{})},{threshold:.25}).observe(box);
+ v.addEventListener('error',()=>{b.remove();v.remove();
+  box.insertAdjacentHTML('beforeend','<div class="ph"><div><div class="pbtn" aria-hidden="true">▶</div><b>Video not found</b><small>Put viddemo.mp4 next to index.html</small></div></div>')});
 })();
 
 /* ===== CONTACT FORM =====
@@ -762,7 +755,7 @@ const FORM_ENDPOINT="";
 const MAIL="Insidethesystem5066@gmail.com";
 (()=>{
  const f=document.getElementById('cform'),st=document.getElementById('fstat'),len=document.getElementById('fl'),price=document.getElementById('fPrice');
- const calc=()=>{const v=Math.max(0,+len.value||0);price.textContent='$'+priceFor(v).toLocaleString()};
+ const calc=()=>{const v=Math.max(0,+len.value||0);price.textContent=money(priceFor(v))};
  len.addEventListener('input',calc);calc();
  const sl=document.getElementById('mins');
  sl&&sl.addEventListener('input',()=>{len.value=sl.value;calc()});
@@ -779,7 +772,7 @@ const MAIL="Insidethesystem5066@gmail.com";
   const d=Object.fromEntries(new FormData(f));
   if(d.website)return;delete d.website;
   if(!d.name.trim()||!/^\S+@\S+\.\S+$/.test(d.email)||!d.message.trim()){say('Please fill in your name, a valid email and your idea.',true);return}
-  d.estimated_price='$'+priceFor(+d.minutes||0);
+  d.estimated_price=money(priceFor(+d.minutes||0));
   if(FORM_ENDPOINT){
    const btn=f.querySelector('button');btn.disabled=true;say('Sending...');
    try{const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d)});
