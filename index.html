@@ -788,9 +788,9 @@ const MAIL="Insidethesystem5066@gmail.com";
   const outlook=`https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${q(subject)}&body=${q(body)}`;
   const yahoo=`https://compose.mail.yahoo.com/?to=${to}&subject=${q(subject)}&body=${q(body)}`;
   const app=`mailto:${MAIL}?subject=${q(subject)}&body=${q(body)}`;
-  /* open Gmail in the browser right away (must happen inside the click) */
-  window.open(gmail,'_blank','noopener');
-  say('We opened Gmail in a new tab with your message ready. Just press Send there. Use another mail service instead if you prefer:');
+  /* Primary action: mailto: opens the user's default mail app (Gmail on phone, Outlook on Windows, etc.) with everything pre-filled. Works reliably on both desktop and mobile. */
+  window.location.href = app;
+  say('Your email app should open with your message ready — just press Send. If nothing opened, pick a mail service below:');
   const o=document.getElementById('fopts');o.hidden=false;
   o.innerHTML=`<a class="main" href="${gmail}" target="_blank" rel="noopener">Gmail</a><a href="${outlook}" target="_blank" rel="noopener">Outlook</a><a href="${yahoo}" target="_blank" rel="noopener">Yahoo Mail</a><a href="${app}">Email app</a><button type="button" id="cp">Copy message</button>`;
   document.getElementById('cp').onclick=async e=>{try{await navigator.clipboard.writeText(`To: ${MAIL}\nSubject: ${subject}\n\n${body}`);e.target.textContent='Copied ✓'}catch{e.target.textContent='Copy failed'}};
