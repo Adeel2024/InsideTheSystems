@@ -513,16 +513,89 @@ section.era-rome{background:transparent}
 .wax svg{width:100%;height:100%;display:block}
 @media(max-width:700px){.wax{width:60px;height:60px;top:-1.8rem}}
 
-/* intro sub-line + era indicator */
-#intro .name::after{content:"ROMA · PERSIA · OTTOMAN · MUGHAL";display:block;margin-top:.9rem;font-size:.55em;letter-spacing:.32em;color:var(--mute)}
-.eranow{position:fixed;left:1rem;bottom:1rem;z-index:17;font:600 .66rem var(--label);letter-spacing:.28em;text-transform:uppercase;padding:.55rem .95rem;border:1px solid var(--gold);background:#0a0705e8;color:var(--gold);border-radius:2px;pointer-events:none;opacity:0;transition:opacity .5s}
-.eranow.show{opacity:1}
-@media(max-width:900px){.eranow{display:none}}
+/* intro sub-line */
+#intro .name::after{content:"A CHRONICLE IN FOUR SEASONS";display:block;margin-top:.9rem;font-size:.55em;letter-spacing:.32em;color:var(--mute)}
+
+/* ===== ADDED AMBIENCE ===== */
+/* 1) parchment page-turn transition for section entries */
+.rv{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv:not(.in){transform:translateY(28px) skewY(.35deg)}
+.rv.in{transform:translateY(0) skewY(0)}
+@media(prefers-reduced-motion:reduce){.rv:not(.in),.rv.in{transform:none}}
+
+/* 2) illuminated margin on desktop */
+@media(min-width:1100px){
+  section, .hero{position:relative}
+  section::before, .hero::before{content:"";position:absolute;left:max(1rem,2vw);top:8%;bottom:8%;width:1px;
+    background:linear-gradient(transparent,#c9a15a55 15%,#c9a15a55 85%,transparent);
+    pointer-events:none;z-index:1}
+  section::after, .hero::after{content:"❦";position:absolute;left:max(1rem,2vw);top:33%;
+    transform:translateX(-50%);font-size:14px;color:#c9a15a99;pointer-events:none;z-index:1;
+    will-change:transform}
+}
+/* floating margin glyph follows scroll */
+.margin-mark{position:fixed;left:max(1rem,2vw);top:0;z-index:1;pointer-events:none;
+  font-size:14px;color:#c9a15a99;transform:translateX(-50%);opacity:0;transition:opacity .6s}
+.margin-mark.on{opacity:1}
+@media(max-width:1099px){.margin-mark{display:none}}
+
+/* 3) ink-blot cursor accent (desktop) */
+.ink-dot{position:fixed;left:0;top:0;width:26px;height:26px;border-radius:50%;
+  background:radial-gradient(circle,#c9a15a55 0%,#c9a15a22 40%,transparent 70%);
+  pointer-events:none;z-index:9999;transform:translate(-50%,-50%) scale(.6);
+  transition:transform .25s ease,opacity .25s ease;opacity:.85;mix-blend-mode:screen}
+.ink-dot.hover{transform:translate(-50%,-50%) scale(1.6)}
+@media(hover:none),(pointer:coarse){.ink-dot{display:none}}
+
+/* 5) stats procession — small ink stroke beside each number */
+.stat strong{position:relative}
+.stat strong::before{content:"";position:absolute;left:-14px;top:50%;translate:0 -50%;width:2px;height:0;background:var(--gold);transition:height .8s cubic-bezier(.2,.8,.2,1);opacity:.7}
+.stat.show strong::before{height:60%}
+
+/* 6) candle-lit intro: warm leak before the logo appears */
+#intro::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 40% at 30% 40%,#ffce7a22,transparent 60%),
+             radial-gradient(50% 40% at 70% 60%,#ffb85f1a,transparent 65%);
+  opacity:0;animation:candle 1.4s ease-out .1s both}
+@keyframes candle{0%{opacity:0}30%{opacity:1}100%{opacity:.55}}
+
+/* 7) ink bleed on hero headline letters */
+.hero h1 .ch{filter:blur(0);transition:filter .4s ease}
+.hero h1.landed .ch{animation:inkBleed .6s ease-out both}
+@keyframes inkBleed{0%{filter:blur(1.2px)}100%{filter:blur(0)}}
+
+/* 8) bookmark ribbon */
+.bookmark{position:fixed;top:70px;right:1rem;z-index:18;pointer-events:none;
+  display:none;align-items:center;gap:.4rem;
+  padding:.35rem .7rem .35rem .9rem;border:1px solid #c9a15a66;background:#0a0705e8;color:var(--gold);
+  font:600 .62rem var(--label);letter-spacing:.24em;text-transform:uppercase;
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);
+  transition:opacity .5s;opacity:0}
+.bookmark.on{opacity:1}
+@media(min-width:900px){.bookmark{display:flex}}
+
+/* 4) gallery floor reflection */
+.refl{position:absolute;left:50%;bottom:2%;translate:-50% 0;z-index:2;
+  width:260px;height:200px;pointer-events:none;
+  -webkit-mask:linear-gradient(#000,#00000 55%);mask:linear-gradient(#000,#00000 55%);
+  filter:blur(6px) saturate(.7);opacity:.28;
+  transform-origin:50% 0;transform:scaleY(-1);
+  transition:opacity .5s}
+.refl img{width:100%;height:100%;object-fit:cover;border-radius:20px}
+
+/* section ambient colour: no visible era headers, keep the palettes */
+.era-rome{--gold:#d4af6a}
+.era-persia{--gold:#e0b84f;--ice:#2fb1ad}
+.era-ottoman{--gold:#e0b04a;--ice:#5b94e0}
+.era-mughal{--gold:#e8b86a;--ice:#e07a5f}
 </style>
 </head>
 <body class="locked">
 <div id="intro" aria-hidden="true"><div class="glow"></div><div class="rings"><i></i><i></i><i></i></div><img id="introLogo" src="Insidethesystem.jfif" alt=""><div class="name">Inside the Systems</div></div>
 <div class="progress" id="prog"></div>
+<div class="bookmark" id="bookmark" aria-hidden="true"><span id="bmText">I · Opening</span></div>
+<div class="margin-mark" id="marginMark" aria-hidden="true">❦</div>
+<div class="ink-dot" id="inkDot" aria-hidden="true"></div>
 <header>
   <nav class="wrap" aria-label="Main">
     <a href="#top" class="logo" id="navLogo"><i></i><img src="Insidethesystem.jfif" alt="Inside the Systems logo"><span>Inside the Systems</span></a>
@@ -551,8 +624,6 @@ section.era-rome{background:transparent}
   </div>
   <div class="scrolltext" aria-hidden="true"><div>Videos with sound<b>❦</b>Creative visuals<b>❦</b>History stories<b>❦</b>Videos with sound<b>❦</b>Creative visuals<b>❦</b>History stories<b>❦</b></div></div>
 
-
-  <!--<div class="era era-rome rv" data-era="Rome"><span class="ar">ROMA AETERNA</span><b>Rome</b><i>The Eternal City</i></div>-->
 <section id="stats" class="era-rome" aria-label="Studio numbers">
     <div class="wrap">
       <div class="stats rv" id="statsBox">
@@ -587,7 +658,6 @@ section.era-rome{background:transparent}
     </div>
   </section>
 
-  <!--<div class="era era-persia rv" data-era="Persia"><span class="ar">شاهنشاهی پارس</span><b>Persia</b><i>Land of Kings</i></div>-->
 <section id="watch" class="era-persia">
     <div class="wrap watchgrid">
       <div class="wtext rv">
@@ -617,13 +687,13 @@ section.era-rome{background:transparent}
     </div>
     <div class="carousel-wrap rv" id="carouselWrap" aria-label="Spinning 3D video gallery">
       <div class="floor"></div>
+      <div class="refl" id="refl" aria-hidden="true"></div>
       <div class="carousel-stage" id="carouselStage"></div>
       <div class="hint" id="hint">← Drag or flick to spin →</div>
     </div>
     <div style="text-align:center;margin-top:3rem"><a class="btn ghost" href="https://www.instagram.com/insidethesystems/" target="_blank" rel="noopener">See every post on Instagram</a></div>
   </section>
 
-  <!--<div class="era era-ottoman rv" data-era="Ottoman"><span class="ar">دولت عثمانیه</span><b>Ottoman</b><i>The Sublime Porte</i></div>-->
 <section id="pricing" class="era-ottoman">
     <div class="wrap">
       <div class="head rv" style="text-align:center;margin-inline:auto"><span class="eyebrow">Video production pricing</span><h2>Start small. Go cinematic.</h2><p>Try us with one short video, or choose a longer film at $75 per minute.</p></div>
@@ -673,7 +743,6 @@ section.era-rome{background:transparent}
     </div>
   </section>
 
-  <!--<div class="era era-mughal rv" data-era="Mughal"><span class="ar">سلطنتِ مغلیہ</span><b>Mughal</b><i>Jewel of Hind</i></div>-->
 <section id="process" class="era-mughal">
     <div class="wrap">
       <div class="head rv"><span class="eyebrow">Process</span><h2>How it works.</h2></div>
@@ -733,11 +802,10 @@ section.era-rome{background:transparent}
   </section>
 </main>
 
-<div class="eranow" id="eranow" aria-hidden="true"></div>
 <div class="sticky" id="sticky"><a class="btn" href="#contact">Start a project</a></div>
 <footer class="era-mughal"><div class="wrap"><span>© 2026 Inside the Systems · <em class="motto">Historia magistra vitae</em></span><a href="https://www.instagram.com/insidethesystems/" target="_blank" rel="noopener">Instagram</a></div></footer>
 
-<!-- ===== MAIN SCRIPT (your original logic, lightened) ===== -->
+<!-- ===== MAIN SCRIPT ===== -->
 <script>
 const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const IG="https://www.instagram.com/insidethesystems/";
@@ -779,6 +847,19 @@ const hookVids=r=>r.querySelectorAll('video[data-src]').forEach(v=>lazyVid.obser
   cards.forEach((c,i)=>c.style.transform=`rotateY(${i*step}deg) translateZ(${R}px)`)};
  layout();addEventListener('resize',layout);
 
+ /* reflection of the front card */
+ const refl=document.getElementById('refl');
+ const updateRefl=()=>{
+  if(!refl)return;
+  let best=0,bestF=-1;
+  for(let i=0;i<n;i++){const f=(Math.cos((i*step-rot)*rad)+1)/2;if(f>bestF){bestF=f;best=i}}
+  const img=cards[best].querySelector('img');
+  if(img&&bestF>.6){
+   refl.innerHTML=`<img src="${img.src}" alt="" loading="lazy">`;
+   refl.style.opacity=(.1+.25*bestF).toFixed(2);
+  }else refl.style.opacity=0;
+ };
+
  let rot=0,vel=0,drag=false,moved=0,lx=0,lt=0,hover=false,visible=true;
  const GAIN=.34,MAXV=60;
  wrap.addEventListener('pointerdown',e=>{drag=true;moved=0;lx=e.clientX;lt=performance.now();vel=0;wrap.classList.add('drag');hint.classList.add('off')});
@@ -797,6 +878,7 @@ const hookVids=r=>r.querySelectorAll('video[data-src]').forEach(v=>lazyVid.obser
    stage.style.transform=`translateZ(-${R}px) rotateX(${tilt}deg) rotateY(${-rot}deg)`;
    for(let i=0;i<n;i++){const f=(Math.cos((i*step-rot)*rad)+1)/2;
     cards[i].style.opacity=(.38+.62*f).toFixed(2);cards[i].style.scale=(.88+.12*f).toFixed(3)}
+   updateRefl();
   }
   requestAnimationFrame(tick)})();
 })();
@@ -831,10 +913,8 @@ const upd=()=>{const v=+m.value;document.getElementById('mLabel').textContent=v+
 m.oninput=upd;upd();
 document.getElementById('chips').onclick=e=>{const b=e.target.closest('button');if(b){m.value=b.dataset.m;upd()}};
 
-const mouse={x:-999,y:-999};
 const prog=document.getElementById('prog');
 addEventListener('scroll',()=>{prog.style.transform=`scaleX(${scrollY/(document.documentElement.scrollHeight-innerHeight)})`},{passive:true});
-addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
 
 /* ===== intro: logo reveal then fly into the navbar ===== */
 (()=>{
@@ -967,6 +1047,80 @@ if(matchMedia('(hover:none)').matches){const h=document.getElementById('hint');i
 /* reveal on scroll (fallback; GSAP takes over below when it loads) */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ===== ADDED: parchment page-turn easing on .rv ===== */
+/* handled by CSS + GSAP batch below */
+
+/* ===== ADDED: margin glyph drift ===== */
+(()=>{
+ const mark=document.getElementById('marginMark');
+ const sections=[...document.querySelectorAll('main > section, main > .hero')];
+ if(!mark||!sections.length)return;
+ const io2=new IntersectionObserver(es=>{es.forEach(e=>{
+   if(e.isIntersecting){
+     const r=e.target.getBoundingClientRect();
+     mark.classList.add('on');
+     mark.style.top=(r.top+innerHeight*.32)+'px';
+   }
+ })},{threshold:[0,.2,.5,1]});
+ sections.forEach(s=>io2.observe(s));
+ addEventListener('scroll',()=>{
+   const mid=innerHeight*.5;
+   let best=null;
+   sections.forEach(s=>{const r=s.getBoundingClientRect();
+     if(r.top<mid&&r.bottom>mid)best=r;
+   });
+   if(best)mark.style.top=(best.top+innerHeight*.32)+'px';
+ },{passive:true});
+})();
+
+/* ===== ADDED: ink-blot cursor (desktop only) ===== */
+(()=>{
+ if(matchMedia('(hover:none),(pointer:coarse)').matches)return;
+ const dot=document.getElementById('inkDot');
+ if(!dot)return;
+ let x=innerWidth/2,y=innerHeight/2,tx=x,ty=y,vis=false;
+ addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;
+   if(!vis){dot.style.opacity='.85';vis=true}
+   const t=e.target.closest('a,button,.carousel-item,.reel,.path,.card,.stat,.kit,.faq summary,.chips button');
+   dot.classList.toggle('hover',!!t);
+ },{passive:true});
+ addEventListener('pointerleave',()=>{dot.style.opacity='0';vis=false});
+ (function tick(){x+=(tx-x)*.25;y+=(ty-y)*.25;dot.style.left=x+'px';dot.style.top=y+'px';requestAnimationFrame(tick)})();
+})();
+
+/* ===== ADDED: stats procession (each card gets .show) ===== */
+(()=>{
+ const box=document.getElementById('statsBox');
+ if(!box)return;
+ const cards=[...box.querySelectorAll('.stat')];
+ const io3=new IntersectionObserver((es)=>{if(!es[0].isIntersecting)return;io3.disconnect();
+   cards.forEach((c,i)=>setTimeout(()=>c.classList.add('show'),i*140));
+ },{threshold:.3});
+ io3.observe(box);
+})();
+
+/* ===== ADDED: bookmark ribbon (section indicator) ===== */
+(()=>{
+ const bm=document.getElementById('bookmark'),txt=document.getElementById('bmText');
+ if(!bm)return;
+ const secs=[...document.querySelectorAll('main > section')];
+ const roman=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+ const names={stats:'Studio',services:'What we do',watch:'Featured film',work:'Selected work',pricing:'Pricing',sponsor:'Sponsorship',process:'Process',faq:'FAQ',contact:'Contact'};
+ const io4=new IntersectionObserver(es=>{es.forEach(e=>{
+   if(e.isIntersecting&&e.intersectionRatio>0.25){
+     const i=secs.indexOf(e.target);
+     const nm=names[e.target.id]||'';
+     txt.textContent=(roman[i]||'')+' · '+(nm||'Section');
+     bm.classList.add('on');
+   }
+ })},{threshold:[.25,.5,.75]});
+ secs.forEach(s=>io4.observe(s));
+ addEventListener('scroll',()=>{
+   if(scrollY<300)bm.classList.remove('on');
+   else bm.classList.add('on');
+ },{passive:true});
+})();
 </script>
 
 <!-- ===== FREE LIBRARIES (all deferred, none block the page) ===== -->
@@ -979,18 +1133,18 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 <!-- ===== ENHANCEMENTS: Lenis, GSAP, ScrollTrigger, SplitText, OGL hero, Rive, Tilt ===== -->
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
- const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;      /* mouse devices (Windows/Mac) */
+ const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
  const mobile=matchMedia('(max-width:900px)').matches;
  const G=window.gsap,ST=window.ScrollTrigger,SP=window.SplitText,LN=window.Lenis;
  const useGsap=!still&&!!(G&&ST);
  const useSplit=useGsap&&!!SP;
  const root=document.documentElement;
 
- /* ---------- 1) LENIS smooth scroll (mouse devices only; phones keep native scroll) ---------- */
+ /* ---------- 1) LENIS smooth scroll ---------- */
  let lenis=null;
  if(!still&&LN&&fine){
   lenis=new LN({duration:1.1,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
-  lenis.stop();                                   /* stays locked during the intro */
+  lenis.stop();
   document.addEventListener('click',e=>{
    const a=e.target.closest('a[href^="#"]');if(!a)return;
    const id=a.getAttribute('href');if(id.length<2)return;
@@ -1005,16 +1159,15 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(lenis){lenis.on('scroll',ST.update);G.ticker.add(t=>lenis.raf(t*1000));G.ticker.lagSmoothing(0)}
   root.classList.add('gs');if(useSplit)root.classList.add('gsh');
 
-  /* scroll reveals (replaces the CSS .rv transitions) */
-  G.set('.rv',{opacity:0,y:28});
+  /* parchment page-turn reveal for .rv */
+  G.set('.rv',{opacity:0,y:28,skewY:.35});
   ST.batch('.rv',{start:'top 90%',once:true,
-   onEnter:b=>{b.forEach(el=>el.classList.add('in'));G.to(b,{opacity:1,y:0,duration:.9,ease:'power3.out',stagger:.12,clearProps:'transform'})}});
+   onEnter:b=>{b.forEach(el=>el.classList.add('in'));
+     G.to(b,{opacity:1,y:0,skewY:0,duration:1,ease:'power3.out',stagger:.1,clearProps:'transform'})}});
 
-  /* hero content drifts up and fades as you scroll away */
   G.to('.hero .wrap',{yPercent:-10,opacity:.35,ease:'none',
    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
 
-  /* ---------- 3) SPLITTEXT section headings ---------- */
   if(useSplit){
    (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{
     document.querySelectorAll('.head h2,.wtext h2,.sponsor h2,#contact h2').forEach(h=>{
@@ -1031,20 +1184,21 @@ document.addEventListener('DOMContentLoaded',()=>{
  /* hero headline: SplitText letters rise in once the logo splash ends */
  const heroIn=()=>{
   const h=document.getElementById('h1');
-  if(!useSplit){return}
+  if(!useSplit){h&&h.classList.add('landed');return}
   const s=SP.create(h,{type:'chars,words',charsClass:'ch',wordsClass:'w'});
   G.set(h,{visibility:'visible'});
-  G.from(s.chars,{opacity:0,y:46,rotateX:-80,transformOrigin:'50% 100%',duration:1,ease:'power4.out',stagger:.03});
+  G.from(s.chars,{opacity:0,y:46,rotateX:-80,transformOrigin:'50% 100%',duration:1,ease:'power4.out',stagger:.03,
+   onComplete:()=>{h.classList.add('landed')}});
  };
  const start=()=>{lenis&&lenis.start();heroIn()};
  window.__introDone?start():addEventListener('introdone',start,{once:true});
 
- /* ---------- 4) VANILLA TILT on cards (mouse devices only) ---------- */
+ /* ---------- 4) VANILLA TILT ---------- */
  if(!still&&fine&&window.VanillaTilt){
   VanillaTilt.init(document.querySelectorAll('.card,.stat,.path,.kit'),{max:5,speed:500,scale:1.015,perspective:1200,gyroscope:false});
  }
 
- /* ---------- 5) OGL shader hero (falls back to light particles) ---------- */
+ /* ---------- 5) OGL shader hero ---------- */
  const fx=document.getElementById('fx'),hero=document.querySelector('.hero');
  const lowEnd=(navigator.hardwareConcurrency||4)<=2||(navigator.deviceMemory||4)<=2;
 
@@ -1103,7 +1257,7 @@ void main(){
    const frame=t=>{
     requestAnimationFrame(frame);
     if(!vis||document.hidden)return;
-    if(mobile&&t-last<33)return;                   /* 30 fps cap on phones */
+    if(mobile&&t-last<33)return;
     last=t;mx+=(tx-mx)*.06;my+=(ty-my)*.06;
     prog.uniforms.uM.value=[mx,my];prog.uniforms.uT.value=t*.001;
     renderer.render({scene:mesh});
@@ -1112,8 +1266,7 @@ void main(){
   }catch(err){particles(fx)}
  })();
 
- /* ---------- 6) RIVE (optional, loads only if the file exists) ----------
-    1) download a free .riv from rive.app/community  2) save it as rive/studio.riv  3) done. */
+ /* ---------- 6) RIVE (optional) ---------- */
  const RIVE_FILE='rive/studio.riv',rbox=document.getElementById('riveBox');
  if(rbox&&!still){
   fetch(RIVE_FILE,{method:'HEAD'}).then(res=>{
@@ -1128,17 +1281,6 @@ void main(){
   }).catch(()=>{});
  }
 });
-</script>
-
-<script>
-(()=>{const el=document.getElementById('eranow');if(!el)return;
- const names={rome:'Rome',persia:'Persia',ottoman:'Ottoman',mughal:'Mughal'};
- const secs=[...document.querySelectorAll('section[class*="era-"],.hero.era-rome')];
- const vis=new Map();
- const io=new IntersectionObserver(es=>{es.forEach(e=>vis.set(e.target,e.isIntersecting?e.intersectionRatio:0));
-  let best=null,r=0;vis.forEach((v,k)=>{if(v>r){r=v;best=k}});
-  if(best){const m=best.className.match(/era-(\w+)/);if(m){el.textContent=names[m[1]]||'';el.classList.add('show')}}},{threshold:[.1,.3,.6]});
- secs.forEach(s=>io.observe(s));})();
 </script>
 </body>
 </html>
