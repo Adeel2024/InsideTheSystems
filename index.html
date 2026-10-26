@@ -19,21 +19,27 @@
 <meta name="twitter:image" content="https://adeel2024.github.io/InsideTheSystems/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#080c12;--bg2:#0e141d;--line:#202b3a;--text:#eaeef3;--mute:#8d9bad;--gold:#ffb454;--ice:#6ad4e8;
 --display:'Bricolage Grotesque',system-ui,sans-serif;--body:'Figtree',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+/* Lenis */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
 a,button{-webkit-tap-highlight-color:transparent}
 body{background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
 .wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
-h1,h2,h3{font-family:var(--display);line-height:1.04;letter-spacing:-.025em}
+h1,h2,h3{font-family:var(--display);line-height:1.04;letter-spacing:-.025em;text-wrap:balance}
+p{text-wrap:pretty}
 ::selection{background:var(--gold);color:#1a1000}
 
-header{position:fixed;inset:0 0 auto;z-index:20;backdrop-filter:blur(14px);background:linear-gradient(#080c12d9,#080c1200)}
+header{position:fixed;inset:0 0 auto;z-index:20;background:linear-gradient(#080c12f2,#080c1200)}
 nav{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{font:800 1.05rem var(--display);display:flex;align-items:center;gap:.6rem}
 .logo i{display:none;width:.65rem;height:.65rem;border-radius:50%;background:var(--gold);animation:pulse 2.4s infinite}
@@ -57,16 +63,14 @@ nav ul a:hover{color:var(--text)}nav ul a:hover::after{transform:scaleX(1)}
 
 /* hero */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:7rem 0 3rem;overflow:hidden}
-.hero::before{content:"";position:absolute;width:60vmax;height:60vmax;left:50%;top:10%;translate:-50% 0;border-radius:50%;background:radial-gradient(circle,#ffb45424,#6ad4e810 45%,transparent 70%);animation:drift 14s ease-in-out infinite alternate}
-@keyframes drift{to{translate:-35% 12%;scale:1.15}}
+.hero::before{content:"";position:absolute;width:60vmax;height:60vmax;left:50%;top:10%;translate:-50% 0;border-radius:50%;background:radial-gradient(circle,#ffb4540f,#6ad4e808 45%,transparent 70%);pointer-events:none}
 .hero::after{content:"";position:absolute;inset:auto 0 0;height:30%;background:linear-gradient(transparent,var(--bg));z-index:1;pointer-events:none}
-#fx{position:absolute;inset:0;width:100%;height:100%}
-.hero .wrap{position:relative;z-index:2;text-align:center}
+#fx{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .wrap{position:relative;z-index:2;text-align:center;will-change:transform}
 .hero h1{font-size:clamp(1.9rem,5vw,3.7rem);font-weight:800;max-width:22ch;margin:0 auto;perspective:800px;line-height:1.1}
 .hero h1 .w{display:inline-block;white-space:nowrap}
-.hero h1 .ch{display:inline-block;background:linear-gradient(100deg,#fff 30%,var(--gold) 50%,#fff 70%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:letter 1.1s cubic-bezier(.2,.7,.2,1) both,sheen 6s infinite;animation-delay:var(--d),2s}
-@keyframes letter{from{opacity:0;transform:translateY(60px) rotateX(-70deg);filter:blur(12px)}}
-@keyframes sheen{from{background-position:100% 0}to{background-position:-100% 0}}
+.hero h1 .ch{display:inline-block;will-change:transform,opacity}
+.gold{color:var(--gold)}
 .hero p{max-width:34rem;margin:1.3rem auto 2rem;color:var(--mute);font-size:1.05rem;animation:rise .9s .5s both}
 .hero .row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;animation:rise .9s .65s both}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}}
@@ -80,7 +84,7 @@ nav ul a:hover{color:var(--text)}nav ul a:hover::after{transform:scaleX(1)}
 .mview{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .track{display:flex;gap:1rem;width:max-content;will-change:transform}
 .track .reel{width:150px;flex:none}
-.arrow{position:absolute;top:50%;translate:0 -50%;z-index:4;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#080c12b8;backdrop-filter:blur(8px);color:var(--text);font-size:1.1rem;cursor:pointer;display:grid;place-items:center;transition:.3s}
+.arrow{position:absolute;top:50%;translate:0 -50%;z-index:4;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#080c12e6;color:var(--text);font-size:1.1rem;cursor:pointer;display:grid;place-items:center;transition:.3s}
 .arrow:hover{background:var(--gold);color:#1a1000;border-color:var(--gold);scale:1.08}
 .arrow.l{left:max(.8rem,calc(50% - 560px))}.arrow.r{right:max(.8rem,calc(50% - 560px))}
 
@@ -95,7 +99,7 @@ nav ul a:hover{color:var(--text)}nav ul a:hover::after{transform:scaleX(1)}
 .reel small{display:block;margin-top:.25rem;color:var(--mute);font-size:.78rem}
 
 .scrolltext{overflow:hidden;padding:2.2rem 0;border-block:1px solid var(--line);white-space:nowrap}
-.scrolltext div{display:inline-block;font:800 clamp(2.5rem,7vw,5.5rem)/1 var(--display);letter-spacing:-.03em;color:transparent;-webkit-text-stroke:1px #ffffff44;animation:slide 30s linear infinite}
+.scrolltext div{display:inline-block;font:800 clamp(2.5rem,7vw,5.5rem)/1 var(--display);letter-spacing:-.03em;color:transparent;-webkit-text-stroke:1px #ffffff44;animation:slide 30s linear infinite;will-change:transform}
 .scrolltext b{color:var(--gold);-webkit-text-stroke:0;margin:0 1.4rem}
 @keyframes slide{to{transform:translateX(-50%)}}
 
@@ -159,11 +163,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 footer a:hover{color:var(--gold)}
 
 .progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--ice),var(--gold));z-index:30}
-.cursor{position:fixed;left:0;top:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,#ffb4541c,#6ad4e80d 40%,transparent 70%);will-change:transform;mix-blend-mode:screen}
-.grain{position:fixed;inset:-50%;z-index:40;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(6) infinite}
-@keyframes grain{20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
 .rv.in{opacity:1;transform:none}
+/* when GSAP is running it owns the reveal */
+.gs .rv{transition:none;transform:none}
+.gsh .hero h1{visibility:hidden}
 
 /* intro splash */
 #intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#14202b,var(--bg) 70%);transition:opacity .9s ease}
@@ -198,8 +202,8 @@ body.locked{overflow:hidden}
 .carousel-wrap::before,.carousel-wrap::after{content:"";position:absolute;left:0;right:0;height:14%;pointer-events:none;z-index:3}
 .carousel-wrap::before{top:0;background:linear-gradient(var(--bg2),transparent)}
 .carousel-wrap::after{bottom:0;background:linear-gradient(transparent,var(--bg2))}
-.floor{position:absolute;left:50%;bottom:6%;width:min(70vw,760px);height:120px;translate:-50% 0;border-radius:50%;background:radial-gradient(ellipse,#ffb45438,transparent 70%);filter:blur(14px);pointer-events:none}
-.hint{position:absolute;left:50%;bottom:2.2rem;translate:-50% 0;z-index:5;padding:.55rem 1.2rem;border-radius:999px;border:1px solid var(--line);background:#080c12b8;backdrop-filter:blur(8px);font-size:.82rem;color:var(--mute);pointer-events:none;transition:opacity .6s;animation:nudge 2.4s ease-in-out infinite}
+.floor{position:absolute;left:50%;bottom:6%;width:min(70vw,760px);height:120px;translate:-50% 0;border-radius:50%;background:radial-gradient(ellipse,#ffb45438,transparent 70%);pointer-events:none}
+.hint{position:absolute;left:50%;bottom:2.2rem;translate:-50% 0;z-index:5;padding:.55rem 1.2rem;border-radius:999px;border:1px solid var(--line);background:#080c12e6;font-size:.82rem;color:var(--mute);pointer-events:none;transition:opacity .6s;animation:nudge 2.4s ease-in-out infinite}
 .hint.off{opacity:0}
 @keyframes nudge{50%{transform:translateX(8px)}}
 
@@ -207,8 +211,8 @@ body.locked{overflow:hidden}
   .carousel-wrap{height:600px}
   .carousel-item{width:220px;height:391px;margin:-195px 0 0 -110px}
 }
-.burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#080c12b8;color:var(--text);cursor:pointer;place-items:center;font-size:1.2rem}
-.mmenu{position:fixed;inset:68px 0 auto;z-index:19;display:none;flex-direction:column;padding:1rem 1.25rem 1.6rem;background:#080c12f2;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#080c12e6;color:var(--text);cursor:pointer;place-items:center;font-size:1.2rem}
+.mmenu{position:fixed;inset:68px 0 auto;z-index:19;display:none;flex-direction:column;padding:1rem 1.25rem 1.6rem;background:#080c12fa;border-bottom:1px solid var(--line)}
 .mmenu.open{display:flex}
 .mmenu a{padding:.9rem 0;border-bottom:1px solid var(--line);font:600 1.1rem var(--display)}
 .mmenu a:last-child{border:0;color:var(--gold)}
@@ -219,15 +223,14 @@ body.locked{overflow:hidden}
   .carousel-item h3{font-size:.78rem}.carousel-item small{font-size:.62rem}
 }
 @media(max-width:480px){.steps{grid-template-columns:1fr}.card{padding:1.6rem}.hero{padding:6rem 0 2.5rem}.hero .row .btn{flex:1;text-align:center;padding:.8rem 1rem}.facts{gap:.7rem}.fact{padding:1.1rem}.fact strong{font-size:1.6rem}.cta .btn{font-size:.82rem;padding:.8rem 1rem;word-break:break-all}.logo{font-size:.95rem}.logo img{width:34px;height:34px}.total strong{font-size:2rem}.scrolltext{padding:1.4rem 0}}
-@media(hover:none){.cursor{display:none}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}.grain,.cursor{display:none}.hero h1 .ch{color:var(--text);background:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
 
 /* hero intro line */
-.kicker{display:inline-flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:.6rem;margin-bottom:1.3rem;padding:.6rem 1.2rem;border:1px solid var(--line);border-radius:24px;background:#0e141d99;backdrop-filter:blur(8px);font:600 clamp(.9rem,2.3vw,1.1rem) var(--body);animation:rise .9s both}
+.kicker{display:inline-flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:.6rem;margin-bottom:1.3rem;padding:.6rem 1.2rem;border:1px solid var(--line);border-radius:24px;background:#0e141df2;font:600 clamp(.9rem,2.3vw,1.1rem) var(--body);animation:rise .9s both}
 .kicker span{color:var(--mute)}.kicker b{color:var(--gold);font-weight:600;min-width:1ch}
 .caret{width:2px;height:1.1em;background:var(--gold);align-self:center;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .hero .row{animation-play-state:paused}
+body.locked .kicker,body.locked .hero p,body.locked .hero .row{animation-play-state:paused}
 
 /* featured player */
 #watch{background:var(--bg)}
@@ -240,7 +243,7 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
 .player .ph small{display:block;color:var(--mute);margin-top:.4rem}
 .player .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:.55}
 .pbtn{position:relative;width:84px;height:84px;margin:0 auto;border-radius:50%;background:var(--gold);color:#1a1000;display:grid;place-items:center;font-size:1.6rem;padding-left:.2rem;box-shadow:0 0 0 0 #ffb45466;animation:pulse 2.4s infinite}
-.sound{position:absolute;right:1rem;bottom:1rem;z-index:3;padding:.55rem 1rem;border-radius:999px;border:1px solid #ffffff33;background:#080c12b8;backdrop-filter:blur(8px);color:var(--text);font:600 .85rem var(--body);cursor:pointer;transition:.3s}
+.sound{position:absolute;right:1rem;bottom:1rem;z-index:3;padding:.55rem 1rem;border-radius:999px;border:1px solid #ffffff33;background:#080c12e6;color:var(--text);font:600 .85rem var(--body);cursor:pointer;transition:.3s}
 .sound:hover{background:var(--gold);color:#1a1000;border-color:var(--gold)}
 .pcap{width:min(84vw,340px);margin:1.3rem auto 0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.15rem;color:var(--mute);font-size:.95rem}
 .pcap strong{color:var(--text);font-family:var(--display);font-size:1.15rem}
@@ -329,6 +332,8 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
 #contact .links a{display:flex;align-items:center;gap:.8rem;padding:.9rem 1.1rem;border:1px solid var(--line);border-radius:16px;color:var(--text);word-break:break-all;transition:.3s}
 #contact .links a:hover{border-color:var(--gold);transform:translateX(4px)}
 #contact .links i{font-style:normal;color:var(--gold)}
+#riveBox{width:min(100%,260px);aspect-ratio:1;margin-top:1.6rem}
+#riveBox canvas{width:100%;height:100%;display:block}
 #cform{border:1px solid var(--line);border-radius:26px;padding:2rem;background:linear-gradient(160deg,#ffb45410,transparent 60%);display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 #cform .full{grid-column:1/-1}
 #cform label{display:block;font:600 .82rem var(--body);letter-spacing:.04em;color:var(--mute);margin-bottom:.4rem}
@@ -354,7 +359,6 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
 
 @media(min-width:1500px){.wrap{width:min(1280px,100% - 4rem)}.hero h1{font-size:4.2rem}.stats{gap:1.4rem}}
 @media(max-width:700px){
-  .grain{display:none}
   .track .reel{width:128px}.track{gap:.7rem}
   .marquee{margin-top:2rem}
   .hero .row{width:100%}
@@ -369,7 +373,7 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
 </head>
 <body class="locked">
 <div id="intro" aria-hidden="true"><div class="glow"></div><div class="rings"><i></i><i></i><i></i></div><img id="introLogo" src="Insidethesystem.jfif" alt=""><div class="name">Inside the Systems</div></div>
-<div class="progress" id="prog"></div><div class="cursor" id="cur"></div><div class="grain"></div>
+<div class="progress" id="prog"></div>
 <header>
   <nav class="wrap" aria-label="Main">
     <a href="#top" class="logo" id="navLogo"><i></i><img src="Insidethesystem.jfif" alt="Inside the Systems logo"><span>Inside the Systems</span></a>
@@ -385,7 +389,7 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
     <canvas id="fx" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="kicker" aria-label="We create cinematic videos, creative visuals and history stories"><span>We create</span><b id="typed" aria-hidden="true">cinematic videos</b><i class="caret" aria-hidden="true"></i></div>
-      <h1 id="h1" aria-label="Stories worth watching twice.">Stories worth watching twice.</h1>
+      <h1 id="h1">Stories worth watching <span class="gold">twice.</span></h1>
       <p class="story" id="story">We create <em>cinematic videos</em> with real sound design, <em>creative visuals</em> and carefully researched <em>history stories</em>. Every piece is built from scratch for Reels, Shorts and TikTok, so it holds attention in the first second and keeps it to the last. You bring the idea, and we handle the visuals, the sound and the story, at just <em>$75 per minute</em>.</p>
       <div class="row"><a class="btn" href="#work">Watch our work</a><a class="btn ghost" href="#pricing">See pricing</a></div>
     </div>
@@ -509,7 +513,7 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
       <div class="kit rv">
         <h3>What your quote depends on</h3>
         <div class="row2">
-          <div><strong>Reach</strong><span>26k+ followers and 600k+ views every month.</span></div>
+          <div><strong>Reach</strong><span>20k+ followers and 600k+ views every month.</span></div>
           <div><strong>Audience</strong><span>Tell us who you want to reach and we will say whether it fits.</span></div>
           <div><strong>Deliverables</strong><span>A sponsored video, a brand mention or a short series, agreed before we start.</span></div>
         </div>
@@ -555,6 +559,8 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
           <a href="mailto:Insidethesystem5066@gmail.com"><i>✉</i>Insidethesystem5066@gmail.com</a>
           <a href="https://www.instagram.com/insidethesystems/" target="_blank" rel="noopener"><i>◎</i>@insidethesystems on Instagram</a>
         </div>
+        <!-- Optional Rive animation: shows only if rive/studio.riv exists -->
+        <div id="riveBox" hidden><canvas id="riveCv" width="520" height="520" aria-hidden="true"></canvas></div>
       </div>
       <form id="cform" class="rv" novalidate>
         <div class="full"><label for="fs">I am interested in</label><select id="fs" name="service"><option value="production">Video production for me or my brand</option><option value="sponsor">Sponsoring your Instagram channel</option><option value="other">Something else</option></select></div>
@@ -577,6 +583,7 @@ body.locked .kicker,body.locked .hero h1 .ch,body.locked .hero p,body.locked .he
 <div class="sticky" id="sticky"><a class="btn" href="#contact">Start a project</a></div>
 <footer><div class="wrap"><span>© 2026 Inside the Systems</span><a href="https://www.instagram.com/insidethesystems/" target="_blank" rel="noopener">Instagram</a></div></footer>
 
+<!-- ===== MAIN SCRIPT (your original logic, lightened) ===== -->
 <script>
 const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const IG="https://www.instagram.com/insidethesystems/";
@@ -584,25 +591,33 @@ const IG="https://www.instagram.com/insidethesystems/";
 const RATE=75;
 const priceFor=v=>v<=0?0:Math.max(RATE,v*RATE);
 const money=x=>"$"+(Number.isInteger(x)?x.toLocaleString():x.toFixed(2));
-const U=id=>`https://images.unsplash.com/${id}?w=800&q=80&auto=format&fit=crop`;
 
-/* ===== EDIT YOUR WORK HERE (src = mp4 path, url = specific reel link) ===== */
+/* ===== EDIT YOUR WORK HERE =====
+   img = poster image, url = Instagram reel link
+   src = optional short looping mp4 (1-3s, under ~300KB). It only loads when the card is on screen.
+   n   = optional result line shown under the category, e.g. "1.2M views"                          */
 const works=[
- {t:"Who Lives Here",cat:"Video with sound",src:"",img:"whl.jpeg",g:"radial-gradient(circle at 30% 25%,#8a2433,#12060a 72%)",url:"https://www.instagram.com/reel/DcUBFF2uFjw/?dlrf=MW92c3Rlcjl2aWg3eA=="},
- {t:"Venice History",cat:"History story",src:"",img:"Architechture.jpeg",g:"radial-gradient(circle at 70% 25%,#a8691f,#120c05 72%)",url:"https://www.instagram.com/reel/DbjPupaug4h/?exln=MWQ3YWVjdG03cWJsbQ=="},
- {t:"Pompeii's Secret",cat:"History story",src:"",img:"Pompei.jpeg",g:"radial-gradient(circle at 60% 70%,#8a3b1f,#120805 72%)",url:"https://www.instagram.com/reel/DcGfxISOZhK/?rpxt=aHpndHRkbW9weHJx"},
- {t:"Chemistry Became Architecture",cat:"Video with sound",src:"",img:"chemis.jpeg",g:"radial-gradient(circle at 25% 65%,#3a2a8a,#08061a 72%)",url:"https://www.instagram.com/reel/DeAS3zJOLiq/?xtok=MXM3aGxwMmF3N2FwOQ=="},
- {t:"Lapis Lazuli",cat:"Creative visual",src:"",img:"Lapis.jpeg",g:"radial-gradient(circle at 70% 60%,#1f8a63,#051410 72%)",url:"https://www.instagram.com/reel/Ddbfkhiv-Cz/?mdxt=bm8wYjNsZG96a3Uw"},
- {t:"The secret of izmik ceramics",cat:"History story",src:"",img:"izmik.jpeg",g:"radial-gradient(circle at 35% 35%,#8a7a1f,#121005 72%)",url:"https://www.instagram.com/reel/DehBDsyPRZ5/?exln=M3NheG9nbmduaDBn"},
- {t:"How Cordoba Stayed Cool",cat:"History story",src:"",img:"Cordoba.jpeg",g:"radial-gradient(circle at 65% 30%,#1f4f8a,#050b14 72%)",url:"https://www.instagram.com/reel/DehBDsyPRZ5/?exln=M3NheG9nbmduaDBn"}
+ {t:"Who Lives Here",cat:"Video with sound",src:"",n:"",img:"whl.jpeg",g:"radial-gradient(circle at 30% 25%,#8a2433,#12060a 72%)",url:"https://www.instagram.com/reel/DcUBFF2uFjw/?dlrf=MW92c3Rlcjl2aWg3eA=="},
+ {t:"Venice History",cat:"History story",src:"",n:"",img:"Architechture.jpeg",g:"radial-gradient(circle at 70% 25%,#a8691f,#120c05 72%)",url:"https://www.instagram.com/reel/DbjPupaug4h/?exln=MWQ3YWVjdG03cWJsbQ=="},
+ {t:"Pompeii's Secret",cat:"History story",src:"",n:"",img:"Pompei.jpeg",g:"radial-gradient(circle at 60% 70%,#8a3b1f,#120805 72%)",url:"https://www.instagram.com/reel/DcGfxISOZhK/?rpxt=aHpndHRkbW9weHJx"},
+ {t:"Chemistry Became Architecture",cat:"Video with sound",src:"",n:"",img:"chemis.jpeg",g:"radial-gradient(circle at 25% 65%,#3a2a8a,#08061a 72%)",url:"https://www.instagram.com/reel/DeAS3zJOLiq/?xtok=MXM3aGxwMmF3N2FwOQ=="},
+ {t:"Lapis Lazuli",cat:"Creative visual",src:"",n:"",img:"Lapis.jpeg",g:"radial-gradient(circle at 70% 60%,#1f8a63,#051410 72%)",url:"https://www.instagram.com/reel/Ddbfkhiv-Cz/?mdxt=bm8wYjNsZG96a3Uw"},
+ {t:"The secret of izmik ceramics",cat:"History story",src:"",n:"",img:"izmik.jpeg",g:"radial-gradient(circle at 35% 35%,#8a7a1f,#121005 72%)",url:"https://www.instagram.com/reel/DehBDsyPRZ5/?exln=M3NheG9nbmduaDBn"},
+ {t:"How Cordoba Stayed Cool",cat:"History story",src:"",n:"",img:"Cordoba.jpeg",g:"radial-gradient(circle at 65% 30%,#1f4f8a,#050b14 72%)",url:"https://www.instagram.com/reel/DehBDsyPRZ5/?exln=M3NheG9nbmduaDBn"}
 ];
-const media=w=>w.src?`<video src="${w.src}" muted loop autoplay playsinline preload="metadata"></video>`:`<img src="${w.img}" alt="${w.t}" loading="lazy" draggable="false">`;
+const media=w=>w.src?`<video data-src="${w.src}" poster="${w.img||''}" muted loop playsinline preload="none"></video>`:`<img src="${w.img}" alt="${w.t}" loading="lazy" decoding="async" draggable="false">`;
+const sub=w=>w.cat+(w.n?' · '+w.n:'');
+/* lazy video: load + play only while visible */
+const lazyVid=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;
+ if(e.isIntersecting){if(!v.getAttribute('src')&&v.dataset.src)v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause()}),{rootMargin:'150px'});
+const hookVids=r=>r.querySelectorAll('video[data-src]').forEach(v=>lazyVid.observe(v));
 
 /* ===== 360° CAROUSEL: full spin + fling inertia ===== */
 (()=>{
  const wrap=document.getElementById('carouselWrap'),stage=document.getElementById('carouselStage'),hint=document.getElementById('hint');
  const items=Array.from({length:Math.max(12,works.length)},(_,i)=>works[i%works.length]),n=items.length,step=360/n,rad=Math.PI/180;
- stage.innerHTML=items.map(w=>`<a class="carousel-item" href="${w.url||IG}" target="_blank" rel="noopener" draggable="false" aria-label="${w.t} — open on Instagram">${media(w)}<span class="chip">Open on Instagram ↗</span><span class="meta"><h3>${w.t}</h3><small>${w.cat}</small></span></a>`).join('');
+ stage.innerHTML=items.map(w=>`<a class="carousel-item" href="${w.url||IG}" target="_blank" rel="noopener" draggable="false" aria-label="${w.t} — open on Instagram">${media(w)}<span class="chip">Open on Instagram ↗</span><span class="meta"><h3>${w.t}</h3><small>${sub(w)}</small></span></a>`).join('');
+ hookVids(stage);
  const cards=[...stage.children];
  let R=600;
  const layout=()=>{const w=cards[0].offsetWidth;R=(w/2)/Math.tan(Math.PI/n)+w*.2;
@@ -621,7 +636,7 @@ const media=w=>w.src?`<video src="${w.src}" muted loop autoplay playsinline prel
  new IntersectionObserver(es=>visible=es[0].isIntersecting).observe(wrap);
 
  (function tick(){
-  if(visible){
+  if(visible&&!document.hidden){
    if(!drag){rot+=vel;vel*=.985;if(Math.abs(vel)<.05)vel=0;if(!still&&Math.abs(vel)<.3)rot+=hover?.03:.08}
    const tilt=innerWidth<=700?-8:-11;
    stage.style.transform=`translateZ(-${R}px) rotateX(${tilt}deg) rotateY(${-rot}deg)`;
@@ -634,8 +649,10 @@ const media=w=>w.src?`<video src="${w.src}" muted loop autoplay playsinline prel
 /* ===== Draggable strip with arrows ===== */
 (()=>{
  const box=document.getElementById('marquee'),track=document.getElementById('track');
- track.innerHTML=[...works,...works].map(w=>`<a class="reel" href="${w.url||IG}" target="_blank" rel="noopener" draggable="false" style="--g:${w.g}" aria-label="${w.t}">${media(w)}<span><h3>${w.t}</h3><small>${w.cat}</small></span></a>`).join('');
- let x=0,v=0,drag=false,moved=0,lx=0,hover=false;
+ track.innerHTML=[...works,...works].map(w=>`<a class="reel" href="${w.url||IG}" target="_blank" rel="noopener" draggable="false" style="--g:${w.g}" aria-label="${w.t}">${media(w)}<span><h3>${w.t}</h3><small>${sub(w)}</small></span></a>`).join('');
+ hookVids(track);
+ let x=0,v=0,drag=false,moved=0,lx=0,hover=false,vis=true;
+ new IntersectionObserver(es=>vis=es[0].isIntersecting).observe(box);
  box.addEventListener('pointerdown',e=>{if(e.target.closest('.arrow'))return;drag=true;moved=0;lx=e.clientX;v=0});
  addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lx;lx=e.clientX;moved+=Math.abs(dx);x-=dx;v=-dx*1.1});
  addEventListener('pointerup',()=>drag=false);addEventListener('pointercancel',()=>drag=false);
@@ -645,9 +662,11 @@ const media=w=>w.src?`<video src="${w.src}" muted loop autoplay playsinline prel
  document.getElementById('mPrev').onclick=()=>v=-22;
  document.getElementById('mNext').onclick=()=>v=22;
  (function tick(){
-  const half=track.scrollWidth/2;
-  if(!drag){x+=v+(still?0:hover?.15:.5);v*=.93}
-  if(half){x=((x%half)+half)%half;track.style.transform=`translateX(${-x}px)`}
+  if(vis&&!document.hidden){
+   const half=track.scrollWidth/2;
+   if(!drag){x+=v+(still?0:hover?.15:.5);v*=.93}
+   if(half){x=((x%half)+half)%half;track.style.transform=`translateX(${-x}px)`}
+  }
   requestAnimationFrame(tick)})();
 })();
 
@@ -657,36 +676,15 @@ const upd=()=>{const v=+m.value;document.getElementById('mLabel').textContent=v+
 m.oninput=upd;upd();
 document.getElementById('chips').onclick=e=>{const b=e.target.closest('button');if(b){m.value=b.dataset.m;upd()}};
 
-/* split headline */
-(()=>{const h=document.getElementById('h1');let n=0;
- h.innerHTML=h.textContent.split(' ').map(w=>`<span class="w" aria-hidden="true">${[...w].map(c=>`<span class="ch" style="--d:${(n++*.045+.1).toFixed(2)}s,${(n*.045+1.4).toFixed(2)}s">${c}</span>`).join('')}</span>`).join(' ')})();
-
 const mouse={x:-999,y:-999};
-const prog=document.getElementById('prog'),cur=document.getElementById('cur');
+const prog=document.getElementById('prog');
 addEventListener('scroll',()=>{prog.style.transform=`scaleX(${scrollY/(document.documentElement.scrollHeight-innerHeight)})`},{passive:true});
-let cx=0,cy=0,tx=innerWidth/2,ty=innerHeight/2;
-addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;mouse.x=e.clientX;mouse.y=e.clientY});
-(function loop(){cx+=(tx-cx)*.12;cy+=(ty-cy)*.12;cur.style.transform=`translate(${cx}px,${cy}px)`;if(!still)requestAnimationFrame(loop)})();
-
-/* hero particles */
-(()=>{const c=document.getElementById('fx'),x=c.getContext('2d');let w,h,P=[];
- const size=()=>{const d=Math.min(devicePixelRatio||1,2);w=c.clientWidth;h=c.clientHeight;c.width=w*d;c.height=h*d;x.setTransform(d,0,0,d,0,0);
-  P=Array.from({length:Math.round(w*h/9000)},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.8+.4,g:Math.random()<.35}))};
- const draw=()=>{x.clearRect(0,0,w,h);const b=c.getBoundingClientRect(),mx=mouse.x-b.left,my=mouse.y-b.top;
-  for(const p of P){const dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);
-   if(d<160){p.vx+=dx/d*.05;p.vy+=dy/d*.05}
-   p.vx*=.985;p.vy*=.985;p.x+=p.vx+.08;p.y+=p.vy;
-   if(p.x>w)p.x=0;if(p.x<0)p.x=w;if(p.y>h)p.y=0;if(p.y<0)p.y=h;
-   x.fillStyle=p.g?'rgba(255,180,84,.85)':'rgba(140,220,240,.7)';x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill()}
-  for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],q=P[j],d=Math.hypot(a.x-q.x,a.y-q.y);
-   if(d<90){x.strokeStyle=`rgba(150,200,230,${.14*(1-d/90)})`;x.lineWidth=.6;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(q.x,q.y);x.stroke()}}
-  if(!still)requestAnimationFrame(draw)};
- size();addEventListener('resize',size);draw()})();
+addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
 
 /* ===== intro: logo reveal then fly into the navbar ===== */
 (()=>{
  const intro=document.getElementById('intro'),big=document.getElementById('introLogo'),navLogo=document.getElementById('navLogo'),navImg=navLogo.querySelector('img');
- const done=()=>{document.getElementById('story').classList.add('in');document.body.classList.remove('locked');intro.remove();navLogo.classList.add('ready')};
+ const done=()=>{document.getElementById('story').classList.add('in');document.body.classList.remove('locked');intro.remove();navLogo.classList.add('ready');window.__introDone=true;dispatchEvent(new Event('introdone'))};
  const skip=()=>{document.body.classList.add('nologo');done()};
  if(still){navImg.complete&&navImg.naturalWidth?done():skip();return}
  let started=false;
@@ -699,7 +697,6 @@ addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;mouse.x=e.clientX;m
    big.style.animation='none';big.style.opacity=1;
    const an=big.animate([{transform:'none'},{transform:`translate(${dx}px,${dy}px) scale(${sc})`}],{duration:1100,easing:'cubic-bezier(.65,0,.25,1)',fill:'forwards'});
    intro.style.background='transparent';intro.style.transition='background .9s';
-   setTimeout(()=>intro.style.setProperty('--x','1'),0);
    an.onfinish=()=>{navLogo.classList.add('ready');intro.classList.add('out');setTimeout(done,500)};
   },2300);
  };
@@ -735,8 +732,7 @@ addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;mouse.x=e.clientX;m
   else{del=false;w=(w+1)%words.length;setTimeout(t,350)}})()})();
 
 /* ===== FEATURED FILM =====
-   The video is embedded in the HTML above: <video id="featuredVideo" src="viddemo.mp4">
-   Keep viddemo.mp4 in the same folder as index.html. To use another file, change that src. */
+   Keep viddemo.mp4 in the same folder as index.html. To use another file, change the src above. */
 (()=>{
  const box=document.getElementById('player'),v=document.getElementById('featuredVideo'),b=document.getElementById('snd');
  b.onclick=()=>{v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play().catch(()=>{})}b.textContent=v.muted?'🔊 Sound on':'🔇 Mute'};
@@ -788,7 +784,6 @@ const MAIL="Insidethesystem5066@gmail.com";
   const outlook=`https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${q(subject)}&body=${q(body)}`;
   const yahoo=`https://compose.mail.yahoo.com/?to=${to}&subject=${q(subject)}&body=${q(body)}`;
   const app=`mailto:${MAIL}?subject=${q(subject)}&body=${q(body)}`;
-  /* Primary action: mailto: opens the user's default mail app (Gmail on phone, Outlook on Windows, etc.) with everything pre-filled. Works reliably on both desktop and mobile. */
   window.location.href = app;
   say('Your email app should open with your message ready — just press Send. If nothing opened, pick a mail service below:');
   const o=document.getElementById('fopts');o.hidden=false;
@@ -814,9 +809,170 @@ const MAIL="Insidethesystem5066@gmail.com";
 /* touch screens: say swipe instead of drag */
 if(matchMedia('(hover:none)').matches){const h=document.getElementById('hint');if(h)h.textContent='← Swipe to spin →'}
 
-/* reveal on scroll */
+/* reveal on scroll (fallback; GSAP takes over below when it loads) */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+
+<!-- ===== FREE LIBRARIES (all deferred, none block the page) ===== -->
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+<!-- ===== ENHANCEMENTS: Lenis, GSAP, ScrollTrigger, SplitText, OGL hero, Rive, Tilt ===== -->
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;      /* mouse devices (Windows/Mac) */
+ const mobile=matchMedia('(max-width:900px)').matches;
+ const G=window.gsap,ST=window.ScrollTrigger,SP=window.SplitText,LN=window.Lenis;
+ const useGsap=!still&&!!(G&&ST);
+ const useSplit=useGsap&&!!SP;
+ const root=document.documentElement;
+
+ /* ---------- 1) LENIS smooth scroll (mouse devices only; phones keep native scroll) ---------- */
+ let lenis=null;
+ if(!still&&LN&&fine){
+  lenis=new LN({duration:1.1,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+  lenis.stop();                                   /* stays locked during the intro */
+  document.addEventListener('click',e=>{
+   const a=e.target.closest('a[href^="#"]');if(!a)return;
+   const id=a.getAttribute('href');if(id.length<2)return;
+   const t=document.querySelector(id);if(!t)return;
+   e.preventDefault();lenis.scrollTo(t,{offset:-70,duration:1.3});
+  });
+ }
+
+ /* ---------- 2) GSAP + ScrollTrigger ---------- */
+ if(useGsap){
+  G.registerPlugin(ST);if(useSplit)G.registerPlugin(SP);
+  if(lenis){lenis.on('scroll',ST.update);G.ticker.add(t=>lenis.raf(t*1000));G.ticker.lagSmoothing(0)}
+  root.classList.add('gs');if(useSplit)root.classList.add('gsh');
+
+  /* scroll reveals (replaces the CSS .rv transitions) */
+  G.set('.rv',{opacity:0,y:28});
+  ST.batch('.rv',{start:'top 90%',once:true,
+   onEnter:b=>{b.forEach(el=>el.classList.add('in'));G.to(b,{opacity:1,y:0,duration:.9,ease:'power3.out',stagger:.12,clearProps:'transform'})}});
+
+  /* hero content drifts up and fades as you scroll away */
+  G.to('.hero .wrap',{yPercent:-10,opacity:.35,ease:'none',
+   scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+  /* ---------- 3) SPLITTEXT section headings ---------- */
+  if(useSplit){
+   (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{
+    document.querySelectorAll('.head h2,.wtext h2,.sponsor h2,#contact h2').forEach(h=>{
+     const s=SP.create(h,{type:'words',wordsClass:'sw'});
+     G.from(s.words,{opacity:0,y:36,rotateX:-45,transformPerspective:600,transformOrigin:'0 100%',duration:.9,ease:'power3.out',stagger:.06,
+      scrollTrigger:{trigger:h,start:'top 88%',once:true}});
+    });
+    ST.refresh();
+   });
+  }
+  addEventListener('load',()=>ST.refresh());
+ }
+
+ /* hero headline: SplitText letters rise in once the logo splash ends */
+ const heroIn=()=>{
+  const h=document.getElementById('h1');
+  if(!useSplit){return}
+  const s=SP.create(h,{type:'chars,words',charsClass:'ch',wordsClass:'w'});
+  G.set(h,{visibility:'visible'});
+  G.from(s.chars,{opacity:0,y:46,rotateX:-80,transformOrigin:'50% 100%',duration:1,ease:'power4.out',stagger:.03});
+ };
+ const start=()=>{lenis&&lenis.start();heroIn()};
+ window.__introDone?start():addEventListener('introdone',start,{once:true});
+
+ /* ---------- 4) VANILLA TILT on cards (mouse devices only) ---------- */
+ if(!still&&fine&&window.VanillaTilt){
+  VanillaTilt.init(document.querySelectorAll('.card,.stat,.path,.kit'),{max:5,speed:500,scale:1.015,perspective:1200,gyroscope:false});
+ }
+
+ /* ---------- 5) OGL shader hero (falls back to light particles) ---------- */
+ const fx=document.getElementById('fx'),hero=document.querySelector('.hero');
+ const lowEnd=(navigator.hardwareConcurrency||4)<=2||(navigator.deviceMemory||4)<=2;
+
+ const particles=cv=>{
+  const x=cv.getContext('2d');let w,h,P=[],vis=true;
+  new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(hero);
+  const size=()=>{const d=Math.min(devicePixelRatio||1,1.5);w=cv.clientWidth;h=cv.clientHeight;cv.width=w*d;cv.height=h*d;x.setTransform(d,0,0,d,0,0);
+   P=Array.from({length:Math.round(w*h/(mobile?26000:16000))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.6+.4,g:Math.random()<.35}))};
+  const draw=()=>{
+   if(vis&&!document.hidden){
+    x.clearRect(0,0,w,h);
+    for(const p of P){p.x+=p.vx+.08;p.y+=p.vy;if(p.x>w)p.x=0;if(p.x<0)p.x=w;if(p.y>h)p.y=0;if(p.y<0)p.y=h;
+     x.fillStyle=p.g?'rgba(255,180,84,.85)':'rgba(140,220,240,.7)';x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill()}
+   }
+   if(!still)requestAnimationFrame(draw)};
+  size();addEventListener('resize',size);draw();
+ };
+
+ (async()=>{
+  if(still||lowEnd){particles(fx);return}
+  try{
+   const {Renderer,Program,Mesh,Triangle}=await import('https://cdn.jsdelivr.net/npm/ogl@1.0.11/src/index.js');
+   const renderer=new Renderer({canvas:fx,dpr:mobile?.7:Math.min(devicePixelRatio||1,1.25),alpha:false,antialias:false,powerPreference:'low-power'});
+   const gl=renderer.gl;
+   const VS=`attribute vec2 uv;attribute vec2 position;varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position,0.,1.);}`;
+   const FS=`
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+uniform float uT;uniform vec2 uRes;uniform vec2 uM;varying vec2 vUv;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+ return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<3;i++){v+=a*n(p);p*=2.;a*=.5;}return v;}
+void main(){
+ vec2 uv=vUv;vec2 p=(uv-.5)*vec2(uRes.x/uRes.y,1.)*2.2;
+ float t=uT*.07;
+ vec2 q=vec2(fbm(p+t),fbm(p+vec2(5.2,1.3)-t));
+ float f=fbm(p+2.*q+t);
+ vec3 col=vec3(.031,.047,.071);
+ col+=vec3(1.,.706,.329)*smoothstep(.45,.95,f)*q.x*.32;
+ col+=vec3(.416,.831,.91)*smoothstep(.4,.9,f)*q.y*.2;
+ col+=vec3(1.,.706,.329)*.12*smoothstep(.5,0.,distance(uv,uM));
+ col*=1.-.5*length(uv-.5);
+ gl_FragColor=vec4(col,1.);
+}`;
+   const prog=new Program(gl,{vertex:VS,fragment:FS,uniforms:{uT:{value:0},uRes:{value:[1,1]},uM:{value:[.5,.45]}}});
+   const mesh=new Mesh(gl,{geometry:new Triangle(gl),program:prog});
+   const size=()=>{renderer.setSize(hero.clientWidth,hero.clientHeight);prog.uniforms.uRes.value=[gl.drawingBufferWidth,gl.drawingBufferHeight]};
+   size();addEventListener('resize',size);
+   let vis=true,last=0,mx=.5,my=.45,tx=.5,ty=.45;
+   new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(hero);
+   addEventListener('pointermove',e=>{const b=hero.getBoundingClientRect();tx=(e.clientX-b.left)/b.width;ty=1-(e.clientY-b.top)/b.height});
+   const frame=t=>{
+    requestAnimationFrame(frame);
+    if(!vis||document.hidden)return;
+    if(mobile&&t-last<33)return;                   /* 30 fps cap on phones */
+    last=t;mx+=(tx-mx)*.06;my+=(ty-my)*.06;
+    prog.uniforms.uM.value=[mx,my];prog.uniforms.uT.value=t*.001;
+    renderer.render({scene:mesh});
+   };
+   requestAnimationFrame(frame);
+  }catch(err){particles(fx)}
+ })();
+
+ /* ---------- 6) RIVE (optional, loads only if the file exists) ----------
+    1) download a free .riv from rive.app/community  2) save it as rive/studio.riv  3) done. */
+ const RIVE_FILE='rive/studio.riv',rbox=document.getElementById('riveBox');
+ if(rbox&&!still){
+  fetch(RIVE_FILE,{method:'HEAD'}).then(res=>{
+   if(!res.ok)throw 0;
+   const s=document.createElement('script');s.src='https://unpkg.com/@rive-app/canvas@2.21.6';
+   s.onload=()=>{
+    rbox.hidden=false;
+    const rv=new rive.Rive({src:RIVE_FILE,canvas:document.getElementById('riveCv'),autoplay:true,onLoad:()=>rv.resizeDrawingSurfaceToCanvas()});
+    new IntersectionObserver(e=>e[0].isIntersecting?rv.play():rv.pause()).observe(rbox);
+   };
+   document.head.appendChild(s);
+  }).catch(()=>{});
+ }
+});
 </script>
 </body>
 </html>
